@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css?family=Macondo+Swash+Caps|Satisfy')
+
+.nombre-tienda-titulo
+  color: #ffeb3b
+.nombre-tienda-subtitulo
+  color: #fafafa
+.contenedor-tienda
+  .upercased
+    text-transform: uppercase
+  .cabecera
+    padding:
+      left: 5%
+      right: 5%
+    .textos
+      width: 100%
+      text-align: center
+      .titulo
+        font-family: 'Satisfy', cursive
+        font-size: 5em
+      .subtitulo
+        font-size: 2em
+        font-family: 'Macondo Swash Caps', cursive
+  .contenedor-imagen-mouse
+    margin-top: -10em !important
+    height: 10em !important
+    width: 100%
+    .imagen-mouse
+      display: inline-flex
+      justify-content: center
+      width: 100%
+      height: 10em
+      background: transparent
+      /* For browsers that do not support gradients */
+      background: -webkit-linear-gradient(transparent, #010101)
+      /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(transparent, #010101)
+      /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(transparent, #010101)
+      /* For Firefox 3.6 to 15 */
+      background: linear-gradient(transparent, #010101)
+      /* Standard syntax */
+      .responsive-img
+        width: 5em
+        height: 5em
+  .somos
+    background-color: #010101
+    text-align: center
+    padding:
+      left: 10%
+      right: 10%
+      top: 5em
+    .titulo
+      font-size: 3.6em
+      color: #f1f1f1
+      padding:
+        top: 1em
+        bottom: .7em
+    .descripcion
+      font-size: 2.5em
+      color: #F0B114
+      padding:
+        bottom: 1.4em
+  .horarios
+    background-color: #010101
+    text-align: center
+    padding:
+      bottom: 5em
+    .titulo
+      font-size: 3.6em
+      color: #f1f1f1
+      padding:
+        top: .5em
+        bottom: .5em
+    .horario
+      font-size: 2.5em
+      color: #F0B114
+      .reloj
+        color: #F0B114
+        font-size: .8em
+      .dias
+        color: #fff
+      .horas
+        color: #F0B114
+  .resennas
+    color: white
+    background-color: #191919
+    min-height: 500px
+    form
+      > *, label, input
+        font-size: 1.3em
+    .contenedor-resenna
+      padding:
+        top: 1em
+        bottom: 1em
+
+    .titulo
+      font-family: "DIN Pro Condensed Bold"
+      font-size: 3.6em
+      color: #f1f1f1
+      padding:
+        top: 2em
+        bottom: 2em
+    .texto
+      .nombre
+        font-size: 3em
+        font-family: "DIN Pro Condensed Medium Italic"
+        padding:
+          bottom: .3em
+        .container-nota
+          font-size: .8em
+          .nota
+            padding:
+              left: .5em
+              right: .5em
+            border-radius: 30%
+      .fecha
+        padding-top: 1em
+        padding-bottom: 1em
+        color: #F0B114
+        font-size: 2em
+        .icon-fecha
+          width: 1em
+          height: 1em
+      .contenido
+        font-family: "DIN Pro Condensed Medium Italic"
+        font-size: 1.6em
+  .contenedor-sociales
+    background-color: black
+    padding:
+      top: 2em
+      bottom: 2em
+    a
+      color: white
+    .titulo
+      font-size: 3.6em
+      color: #fff
+    .info
+      .mail, .telefono, .direccion
+        font-size: 1.4em
+  .container-mapa
+    background-color: black
+    padding:
+      top: 2em
+      bottom: 2em
+    .titulo
+      font-size: 3.6em
+      color: #fff
+    .container
+      margin:
+        top: 3em
+        bottom: 3em
+      .info
+        background-color: #2B2B2B
+        padding:
+          top: 2em
+          bottom: 1.5em
+          left: 2em
+          right: 2em
+        color: #fff
+        .title
+          padding-bottom: .5em
+          font-size: 2em
+        .content
+          font-size: 1.5em
+          a
+            color: #fff
+.contenedor-sociales
+  .tooltip
+    font-family: "DIN Pro Condensed Italic"
+
+#evaluacion_select
+  margin: .5em
+  background-color: #B40B33
+
+.galeria
+  .titulo
+    font-size: 3.6em
+    color: #F1F1F1
+    padding: .5em auto
+  .fotorama__wrap
+    margin: 3em auto
+
+.titulo
+  font-family: "DIN Pro Condensed Bold"
+  font-size: 3.6em
+  padding:
+    top: 1.5em
+    bottom: .7em
+.somos
+  .img-logo-responsive
+    max-width: 80%
+    width: 400px
+    min-width: 30px
+.info
+  min-height: 9em
+  height: auto
+  line-height: 2em
+  background-color: #202020
+  white-space: nowrap
+  text-overflow: clip
+  .mail, .telefono, .direccion
+    height: auto
+    min-height: 6em
+  .img-icon
+    width: 45px !important
+    max-width: 46px !important
+.info.row.right.row
+  padding: 0
+.info.row.right
+  min-width: 100%
+@media screen and (max-width: 700px)
+  .info.row.right.row
+    float: initial
+  .contenedor-tienda
+    .titulo
+      font-size: 2.3em !important
+    .somos
+      .descripcion
+        font-size: 1.3em
+    .horario
+      font-size: 1.3em !important
+  .contenedor-resenna
+    font-size: 1.4em !important
+  .contenedor-tienda .resennas .texto .nombre
+    font-size: 1.8em !important
+  .contenedor-tienda .resennas .texto .contenido
+    font-size: 1em !important
+  .contenedor-tienda .resennas .texto .fecha
+    font-size: 1em !important
+
+@media screen and (max-width: 600px)
+  .mail, .telefono, .direccion
+    text-align: center
+
+.form-contacto
+  min-height: 500px
+  color: #fff
+  input
+    &:not([type]), &[type=text], &[type=password], &[type=email], &[type=url], &[type=time], &[type=date], &[type=datetime], &[type=datetime-local], &[type=tel], &[type=number], &[type=search]
+      font-family: 'DIN Pro Condensed Light'
+      text-transform: uppercase
+      background-color: #B40B33
+      font-size: 1.7em
+      height: 2em
+      line-height: 2em
+      box-shadow: none
+      box-sizing: content-box
+      transition: all 0.25s
+      border-radius: 7px
+      border: #fff 1px solid
+      padding-left: 1em
+      width: 90%
+  textarea.materialize-textarea
+    font-family: 'DIN Pro Condensed Light'
+    text-transform: uppercase
+    background-color: #B40B33
+    font-size: 1.7em
+    min-height: 4em
+    line-height: 1em
+    box-shadow: none
+    box-sizing: content-box
+    transition: all 0.25s
+    border-radius: 7px
+    border: #fff 1px solid
+    padding-left: 1em
+    width: 90%
+
+  .btn
+    font-family: 'DIN Pro Condensed Bold'
+    border-radius: 7px
+    font-size: 1.7em
+    color: #E2093D
+#mouse_body
+  top: -150px
+  border-style: solid
+  border-width: 2px
+  border-color: #fff
+  border-radius: 32px
+  /* used just to add space from top
+  /* size of the mouse body
+  height: 86px
+  width: 46px
+  /* to center in browser
+  margin: 200px auto 0 auto
+
+#mouse_wheel
+  border-style: solid
+  border-width: 2px
+  border-color: #fff
+  border-radius: 8px
+  background-color: #fff
+  /* position property required to play animation
+  position: relative
+  height: 3px
+  width: 3px
+  /* to center wheel in mouse body
+  margin: 0 auto
+  animation: wheel_animation 1.5s linear infinite
+
+/* include use -moz-, -webkit-, or -o- for respective browser type
+@keyframes wheel_animation
+  0%
+    opacity: 0
+    top: 2px
+
+  50%
+    opacity: 1
+    top: 50%
+
+  100%
+    opacity: 0
+    top: 33px

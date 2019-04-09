@@ -1,0 +1,88 @@
+{% load staticfiles thumbnail l10n %}
+{# for event #}
+<div class="col s12 m6 l4 item-m">
+    <div class="card-evento">
+        <div class="card-image">
+            {% if event.evento_foto.last %}
+                <img class="redondeado"
+                     src="{{ event.evento_foto.last.archivo|thumbnail_url:'min_evento' }}">
+            {% else %}
+                <img class="redondeado responsive-img"
+                     src="{% static 'img/default-event.jpg' %}">
+            {% endif %}
+        </div>
+        <div class="card-content">
+            <span class="card-title">{{ event.titulo|capfirst }}</span>
+            <div class="fecha">
+                <div class="left">
+                    <img class="col" src="{% static 'icons/calendario.svg' %}" alt="">
+                    <span class="col dia">{{ event.fecha_inicio|date:"M j, Y" }}</span>
+                </div>
+                <div class="right">
+                    <img class="col" src="{% static 'icons/reloj.svg' %}" alt="">
+                    <span class="col hora">{{ event.fecha_inicio|time:"P" }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="justify">
+                {% if event.subtitulo %}
+                    <p class="col s12 text-description">{{ event.subtitulo }}</p>
+                {% else %}
+                    <p class="col s12 text-description">{{ event.descripcion|truncatechars:150 }}</p>
+                {% endif %}
+                <div class="col right">
+                    {% if event.redireccion and event.url %}
+                        <a class="btn waves-effect waves-light red modal-trigger"
+                           target="_blank" href="{{ event.url }}">Leer más
+                        </a>
+                    {% else %}
+                        <a class="btn waves-effect waves-light red modal-trigger"
+                           target="_blank" href="#{{ event.slug }}">Leer más
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  <!-- Modal Structure -->
+<div id="{{ event.slug }}" class="event-modal modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>{{ event.titulo }}</h4>
+        <br>
+        <div class="fecha-modal">
+            <div class="col m4 s12">
+                <img class="col" src="{% static 'icons/calendario.svg' %}" alt="">
+                <span class="col dia">{{ event.fecha_inicio|date:"b t,Y" }}</span>
+            </div>
+            <div class="col m4 s12">
+                <img class="col" src="{% static 'icons/reloj.svg' %}" alt="">
+                <span class="col hora">{{ event.fecha_inicio|date:"P" }}</span>
+            </div>
+        </div>
+        <br>
+        <br>
+        {% if event.evento_foto %}
+            <img class="redondeado center responsive-img"
+                 src="{{ event.evento_foto.last.archivo|thumbnail_url:'min_evento' }}">
+            <br>
+        {% endif %}
+        <p class="descripcion-modal">{{ event.descripcion|safe }}</p>
+        {% comment %}
+            {% if event.google_map_iframe %}
+            {{ event.google_map_iframe|safe }}
+            <br>
+            {% endif %}
+        {% endcomment %}
+        <br>
+        <br>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+        {% if event.url %}
+            <a href="{{ event.url }}" target="_blank"
+               class="modal-action modal-dialog waves-effect waves-green btn-flat red white-text">Leer
+                más</a>
+        {% endif %}
+    </div>
+</div>

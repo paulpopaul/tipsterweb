@@ -1,0 +1,21 @@
+body {
+    background-color: #010101;
+    color: #fff;
+}
+
+
+.portada .container .titulo,
+.portada .container .subtitulo,
+.quienes-somos .container .titulo,
+.galeria-imagenes .container .titulo,
+.galeria-imagenes .container .titulo,
+.resennas .container .titulo,
+.redes-sociales .container .titulo,
+.formulario-contacto .container .titulo{
+    text-align: center;
+    font-size: 3em;
+}
+
+.portada .container .subtitulo{
+    font-size: 2em;
+}

@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<!--Import jQuery before materialize.js-->
+<script src="{% static 'materialize/js/materialize.js' %}"></script>
+<script src="{% static 'js/masonry.js' %}"></script>
+<script type="text/javascript">
+    (function ($) {
+        var $container = $('.masonry-container');
+        $container.imagesLoaded(function () {
+            $container.masonry({
+                columnWidth: '.item-m',
+                itemSelector: '.item-m'
+            });
+        });
+        $('a[data-toggle=tab]').each(function () {
+            var $this = $(this);
+            $this.on('shown.bs.tab', function () {
+                $container.imagesLoaded(function () {
+                    $container.masonry({
+                        columnWidth: '.item-m',
+                        itemSelector: '.item-m'
+                    });
+                });
+            });
+        });
+    }(jQuery));
+</script>
+
+<script type="text/javascript">
+    if (document.location.search.match(/type=embed/gi)) {
+        window.parent.postMessage("resize", "*");
+    }
+</script>
+<script type="text/javascript" src="{% static 'js/init.js' %}"></script>
+<script src="{% static 'typed/assets/demos.js' %}"></script>
+
+{% block xtrascripts %}{% endblock %}

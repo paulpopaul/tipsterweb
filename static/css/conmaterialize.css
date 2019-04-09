@@ -1,0 +1,276 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-weight: 300;
+}
+
+main {
+    flex: 1 0 auto;
+    background-color: #EBEBEB;
+}
+
+.dark-primary-color {
+    background: #303F9F !important;
+}
+
+.default-primary-color {
+    background: #3F51B5 !important;
+}
+
+.light-primary-color {
+    background: #C5CAE9 !important;
+}
+
+.text-primary-color {
+    color: #FFFFFF !important;
+}
+
+.accent-color {
+    background: #FF4081;
+}
+
+.primary-text-color {
+    color: #212121;
+}
+
+.secondary-text-color {
+    color: #757575;
+}
+
+.divider-color {
+    border-color: #BDBDBD;
+}
+
+header, main, footer {
+    padding-left: 250px;
+}
+
+.tabs .tab a:hover, .tabs .tab a.active, .tabs .tab a {
+    background-color: #3F51B5 !important;
+    color: #fff !important;
+    font-weight: 700;
+}
+
+.tabs .indicator {
+    background-color: #FF4081;
+}
+
+.titulo {
+    color: #212121;
+    width: 100%;
+    font-size: 1.7em;
+}
+
+.subtitulo {
+    color: #757575;
+    width: 100%;
+    font-size: 1em;
+}
+
+.select-wrapper {
+    width: 32%;
+}
+
+main {
+    flex: 1 0 auto;
+    background-color: #EBEBEB;
+}
+
+.nav-content {
+    padding-left: 200px;
+}
+
+.nav-title {
+    padding: 20px !important;
+    height: 200px;
+    position: static;
+}
+
+.main {
+    margin: 10px auto;
+    padding: 15px 15px;
+}
+
+.cont-title {
+    margin: -45px -45px 0 -45px;
+    padding: 15px 45px;
+    color: #FFFFFF;
+}
+
+.cont-title .btn-floating {
+    float: right;
+    right: 0px;
+    display: block;
+    bottom: -1.5em;
+    color: #fff;
+}
+
+.tarjet-main .btn-floating {
+    float: right;
+    right: 25px;
+    display: block;
+    bottom: 1.8em;
+    color: #fff;
+}
+
+.side-nav {
+    width: 250px;
+}
+
+.side-nav a {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.title-card-image {
+    padding: 4px 15px;
+    background-color: #005c8b;
+    color: #f1f1f1;
+}
+
+.title-card-text {
+    font-size: 42px;
+}
+
+.title-card-filter {
+    background-color: #005c8b;
+    color: #f1f1f1;
+    padding: 4px 15px;
+}
+
+.title-card-filter {
+    font-size: 24px
+}
+
+.form-tarjet {
+    padding: 3em 3em 3em 3em;
+    margin: auto auto 20px auto;
+    background-color: #fff;
+}
+
+.cont-tarjet {
+    padding-top: 30px;
+}
+
+.tituloTarjet {
+    color: #fff;
+    font-size: 1.6em;
+    font-weight: 400;
+}
+
+.btn-floating:hover {
+    background-color: #fe3f7d !important;
+}
+
+.collection .collection-item .circle {
+    height: 30px;
+    width: 30px;
+    border-color: transparent;
+}
+
+.collection .collection-im label {
+    vertical-align: text-top;
+}
+
+.collection .collection-item.avatar .title {
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.collection .collection-item.avatar {
+    min-height: 12px !important;
+}
+
+.collection .collection-item.avatar .subtitle {
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.menu-principal .opciones {
+    width: 250px !important;
+}
+
+.menu-principal .nav-extended ul {
+    font-weight: 500;
+}
+
+#tabFotos iframe {
+    width: 100%;
+    height: 100% !important;
+    border: none;
+    overflow: auto;
+}
+
+.select-wrapper {
+    width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+    header, main, footer, .container-nav {
+        padding-left: 0;
+    }
+
+    .form-tarjet {
+        padding: 1em;
+        margin: 10px auto;
+        background-color: #fff;
+    }
+}
+
+th.header {
+    background-image: url('/static/img/bg.gif');
+    cursor: pointer;
+    font-weight: bold;
+    background-repeat: no-repeat;
+    background-position: center right;
+    padding-left: 20px;
+    border-right: 1px #dad9c7;
+    margin-left: -1px;
+}
+
+th.headerSortDown {
+    background-image: url('/static/img/desc.gif');
+    background-color: #eeeeee;
+}
+
+th.headerSortUp {
+    background-image: url('/static/img/asc.gif');
+    background-color: #eeeeee;
+}
+
+#listadoClientes a, #listadoTiendas a {
+    color: #000 !important;
+}
+
+#listadoClientes .listTiendas {
+    text-transform: capitalize;
+}
+
+.collection a, .collapsible-header a {
+    text-transform: capitalize;
+    color: #000 !important;
+}
+
+.form-tarjet .col .collapsible {
+    margin-top: 30px;
+}
+
+.checking {
+    width: 50px;
+}
+
+.icon-sidenav {
+    background-color: #EBEBEB;
+    border-radius: 50%;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 25px 0 0;
+    width: 40px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+#slide-out {
+    background-color: #fff;
+}

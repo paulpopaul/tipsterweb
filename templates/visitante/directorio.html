@@ -1,0 +1,545 @@
+{% extends 'visitante/secciones/base.html' %}
+{% load staticfiles thumbnail %}
+{% block xtrastyles %}
+    <style>
+        @media screen and (max-width: 600px){
+            main{
+                width: 100%;
+            }
+        }
+    </style>
+{% endblock %}
+{% block title %}{{ category.nombre_plural }}{% endblock %}
+{% block main %}
+    <div class="hide-on-large-only">
+        <ul class="fixed directorio">
+            <li class="center">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'img/logo1.png' %}" alt=""
+                         class="responsive-img"></a>
+            </li>
+            <li class="container">
+                <form action="/busqueda/" method="GET" id="form-busquedas" class="row">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="q" type="text" id="autocomplete-input"
+                                   class="autocomplete stop" autocomplete="off" value="{{ query|escape }}">
+                        </div>
+                    </div>
+                </form>
+            </li>
+            <li class="container">
+                <span class="subheader center">{{ category.category_store.all.count }} RESULTADOS</span></li>
+            <li>
+                {% for s in category.category_store.select_related %}
+                    {% include 'visitante/secciones/card-directorio.html' %}
+                {% endfor %}
+            </li>
+            <li class="container center">
+                <div class="redtipster ">
+                    <div class="titulo">Red Tipster</div>
+                    <a href="{% url 'home' %}#contactanos" class="btn red darken-4 white-text waves-effect redondeado">Unirme</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="hide-on-med-and-down">
+        <div class="menu-directorio">
+            <a href="#" data-activates="slide-out" class="button-collapse"></a>
+            <ul id="slide-out" class="side-nav fixed directorio">
+                <li class="center">
+                    <a href="{% url 'home' %}" id="logo-direct">
+                        <img src="{% static 'img/logo1.png' %}" alt=""
+                             class="responsive-img"></a>
+                </li>
+                <li class="container busquedas">
+                    <form action="/busqueda/" method="GET" id="form-busquedas" class="row">
+                        <div class="input-field col s10">
+                            <input name="q" type="text" id="autocomplete-input"
+                                   class="autocomplete stop" autocomplete="off" value="{{ query|escape }}">
+                        </div>
+                        <div class="col s2 contenedor-search-icon">
+                            <button class="vali btn waves-light grey btn-flat valing">
+                                <i class="material-icons medium red-darken-4">search</i>
+                            </button>
+                        </div>
+
+                    </form>
+                </li>
+                <li class="container center">
+                    <span class="subheader">{{ category.category_store.count }} Resultados</span></li>
+                <li>
+                    {% for s in category.category_store.select_related %}
+                        {% include 'visitante/secciones/card-directorio.html' %}
+                    {% endfor %}
+                </li>
+                <li class="container center">
+                    <div class="redtipster ">
+                        <div class="titulo">Red Tipster</div>
+                        <a href="{% url 'home' %}#contactanos" class="btn red darken-4 white-text waves-effect redondeado">Unirme</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="mapadegoogle ">
+            <div id="map"></div>
+            {% if category.category_store.select_related %}
+                <script>
+                    var styles = [
+                        {
+                            "featureType": "administrative.locality",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#ff0200"
+            },
+            {
+                "saturation": 7
+            },
+            {
+                "lightness": 19
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.locality",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "saturation": "-3"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.locality",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#748ca3"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#ff0200"
+            },
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 100
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#ff0200"
+            },
+            {
+                "saturation": "23"
+            },
+            {
+                "lightness": "20"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.school",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffdbda"
+            },
+            {
+                "saturation": "0"
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "hue": "#ff0200"
+            },
+            {
+                "saturation": "100"
+            },
+            {
+                "lightness": 31
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#f39247"
+            },
+            {
+                "saturation": "0"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "hue": "#008eff"
+            },
+            {
+                "saturation": -93
+            },
+            {
+                "lightness": 31
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#ffe5e5"
+            },
+            {
+                "saturation": "0"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "hue": "#bbc0c4"
+            },
+            {
+                "saturation": -93
+            },
+            {
+                "lightness": -2
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "hue": "#ff0200"
+            },
+            {
+                "saturation": -90
+            },
+            {
+                "lightness": -8
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#e9ebed"
+            },
+            {
+                "saturation": 10
+            },
+            {
+                "lightness": 69
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#e9ebed"
+            },
+            {
+                "saturation": -78
+            },
+            {
+                "lightness": 67
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+                        }
+                    ];
+                    var map;
+                    function initMap() {
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 13,
+                            styles: styles,
+                            center: new google.maps.LatLng({{ category.category_store.last.google_map }}),
+                            mapTypeId: 'roadmap'
+                        });
+                        {% if categori.icono_mapa %}
+                            var iconBase = '{{ MEDIA_URL }}';
+                            var icons = {
+                                parking: {
+                                    icon: iconBase + '{{ category.icono_mapa }}'
+                                },
+                                library: {
+                                    icon: iconBase + '{{ category.icono_mapa }}'
+                                },
+                                info: {
+                                    icon: iconBase + '{{ category.icono_mapa }}'
+                                }
+                            };
+                        {% else %}
+                            var icons = {
+                                parking: {
+                                    icon: '{% static 'icons/ic_location_on_black_24px.svg' %}'
+                                },
+                                library: {
+                                    icon: '{% static 'icons/ic_location_on_black_24px.svg' %}'
+                                },
+                                info: {
+                                    icon: '{% static 'icons/ic_location_on_black_24px.svg' %}'
+                                }
+                            };
+                        {% endif %}
+
+                        function muestrameId(id) {
+                            console.log(id)
+                        }
+
+                        function addMarker() {
+                            {% for mark in category.category_store.select_related %}
+                                var point = new google.maps.LatLng({{mark.google_map}});
+                                //var image = '/media/{{ mark.categoria.icono_mapa }}';
+                                var marker = new google.maps.Marker({
+                                    position: point,
+                                    map: map,
+                                    {% if mark.categoria.icono_mapa %}
+                                        icon: '/media/{{ mark.categoria.icono_mapa }}',
+                                    {% endif %}
+                                    url: "/tienda/{{ mark.slug }}",
+                                    title: '{{ mark.id }}'
+                                });
+                                marker['infowindow']  = new google.maps.InfoWindow({
+                                    content: "<div class=\"infomap\"> " +
+                                    "<img src=\"/media/{{ mark.get_foto_cabecera.archivo }}\">" +
+                                    "<a href=\"/tienda/{{ mark.slug }}\"><h1>{{mark.nombre}}</h1> <br> {{ mark.direccion }}</a></div>"
+                                });
+                                google.maps.event.addListener(marker, 'click', function() {
+                                    window.location.href = this.url;
+                                    //this['infowindow'].open(map, this);
+                                });
+                                google.maps.event.addListener(marker, 'mouseover', function() {
+                                    this['infowindow'].open(map, this);
+                                    console.log("#card-{{ mark.id }}");
+                                });
+                                google.maps.event.addListener(marker, 'mouseout', function() {
+                                    this['infowindow'].close(map, this);
+                                });
+
+                                google.maps.event.addListener(marker, 'mouseout', function() {
+                                    this['infowindow'].close(map, this);
+                                });
+
+                            {% endfor %}
+                        }
+                        var features = [
+                            {% for foo in category.category_store.select_related %}
+                                {
+                                    position: new google.maps.LatLng({{ foo.google_map }}),
+                                    type: 'info'
+                                },
+                            {% endfor %}
+                        ];
+                        for (var i = 0, feature; feature = features[i]; i++) {
+                            addMarker(feature);
+                        }
+                    }
+                </script>
+            {% else %}
+                <script>
+                    var map;
+                    function initMap() {
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 13,
+                            center: new google.maps.LatLng(-39.828524, -73.223841),
+                            mapTypeId: 'roadmap'
+                        });
+                        {% if categori.icono_mapa %}
+                            var iconBase = '{{ MEDIA_URL }}';
+                            var icons = {
+                                parking: {
+                                    icon: iconBase + '{{ category.icono_mapa }}'
+                                },
+                                library: {
+                                    icon: iconBase + '{{ category.icono_mapa }}'
+                                },
+                                info: {
+                                    icon: iconBase + '{{ category.icono_mapa }}'
+                                }
+                            };
+                        {% else %}
+                            var icons = {
+                                parking: {
+                                    icon: '{% static 'icons/ic_location_on_black_24px.svg' %}'
+                                },
+                                library: {
+                                    icon: '{% static 'icons/ic_location_on_black_24px.svg' %}'
+                                },
+                                info: {
+                                    icon: '{% static 'icons/ic_location_on_black_24px.svg' %}'
+                                }
+                            };
+                        {% endif %}
+
+
+                        function addMarker() {
+                            {% for mark in category.category_store.select_related %}
+                                var point = new google.maps.LatLng({{mark.google_map}});
+                                var image = '{{ MEDIA_URL }}'+ 'img/logotipster.png';
+                                var marker = new google.maps.Marker({
+                                    position: point,
+                                    map: map,
+                                    //icon: image,
+                                    url: 'http://172.16.0.101:8882/zone/' + {{mark.id}},
+                                    title: '{{ mark.id }}'
+                                });
+                                marker['infowindow']  = new google.maps.InfoWindow({
+                                    content: "<h1>{{mark.name}}</h1> <br> {{ mark.name }} <p> <a href=\"http:\/\/172.16.0.101:8882\/zone\/{{ mark.id }}\"> {{ mark.name }}</a>",
+                                });
+                                google.maps.event.addListener(marker, 'click', function() {
+                                    //window.location.href = this.url;
+                                    this['infowindow'].open(map, this);
+                                });
+                                google.maps.event.addListener(marker, 'mouseover', function() {
+                                    // this['infowindow'].open(map, this);
+                                });
+                                google.maps.event.addListener(marker, 'mouseout', function() {
+                                    // this['infowindow'].close(map, this);
+
+                                });
+                            {% endfor %}
+                        }
+
+                        var features = [
+                            {% for foo in category.category_store.select_related %}
+                                {
+                                    position: new google.maps.LatLng({{ foo.google_map }}),
+                                    type: 'info'
+                                },
+                            {% endfor %}
+                        ];
+                        for (var i = 0, feature; feature = features[i]; i++) {
+                            addMarker(feature);
+                        }
+                    }
+                </script>
+            {% endif %}
+
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoBxQH6J5sUMk2TEhmqE2IXQ0yeCvromI&callback=initMap">
+            </script>
+
+        </div>
+        <div class="type-wrap hidden">
+            <div id="strings-autocomplete">
+                <p></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block xtrascripts %}
+    <script>
+        (function ($) {
+            $(function () {
+                $('input.autocomplete').autocomplete({
+                    data: {
+                        {% for foo in categories %}
+                            "{{ foo.nombre_plural }}": {% if foo.icono_mapa %}'{{ MEDIA_URL }}{{ foo.icono_mapa }}'
+                                {% else %}null{% endif %},
+                        {% endfor %}
+                        {% for foo in stores %}
+                            "{{ foo.nombre }}": null,
+                        {% endfor %}
+
+                    },
+                    limit: 3, // The max amount of results that can be shown at once. Default: Infinity.
+                    onAutocomplete: function (val) {
+                        reDirecciona(val);
+                    },
+                    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+                    height: 1
+
+                });
+
+                function reDirecciona(val) {
+                    this.val = val;
+                    d = {
+                        {% for category in categories %}
+                            "{{ category.nombre_plural }}": "{% url 'directory' category.slug %}",
+                        {% endfor %}
+                        {% for store in stores %}
+                            "{{ store.nombre }}": "{% url 'detail-store' store.slug %}",
+                        {% endfor %}
+//Apple: "/admin/publicidad/tienda/1",
+//clave2: 22,
+                    };
+                    return window.location.href = d[val];
+                }
+            }); // end of document ready
+        })(jQuery); // end of jQuery name space
+    </script>
+{% endblock %}

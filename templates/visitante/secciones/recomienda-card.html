@@ -1,0 +1,105 @@
+{% load staticfiles cache thumbnail %}
+
+<a href="{% url 'detail-store' s.slug %}"
+   class="black-text col s12 m6 l4 main-tienda card-r"
+   id="tienda-{{ s.id }}">
+    <div class="card-panorama hoverable card-recomienda">
+        <div class="cabecerapanorama center">
+            <span class="card-title">
+                {% if s.panorama_para %}
+                    {{ s.panorama_para|truncatechars_html:24 }}
+                {% endif %}
+            </span>
+            <br>
+            {% if s.horario_semana_inicio|date:"H:i" < now_|date:"H:i" and s.horario_semana_fin|date:"H:i" > now_|date:"H:i" %}
+                <span class="estado green-text">Abierto Ahora~</span>
+            {% else %}
+                <span class="estado red-text">Cerrado~</span>
+            {% endif %}
+        </div>
+
+        {% if s.tienda_foto.last %}
+            <img class="img-responsive"
+                 src="{{ s.get_foto_tarjeta.archivo|thumbnail_url:'min_tienda' }}">
+        {% else %}
+            <img class="img-responsive"
+                 src="{% static 'img/default-event.jpg' %}">
+        {% endif %}
+        <div class="piepanorama col s12">
+
+            <span class="col s12 titulopanorama center">{{ s.nombre|truncatechars:24 }}</span><br>
+            <div class="col s2 white-text contenedor-nota">
+                {% if s.promedio_evaluacion < 3 %}
+                    <span class="nota red">{{ s.promedio_evaluacion }}</span>
+                {% else %}
+                    <span class="nota green">{{ s.promedio_evaluacion }}</span>
+                {% endif %}
+            </div>
+            {% if s.categoria %}
+                <img class="icono col s5 invert-color"
+                     src="{{ MEDIA_URL }}{{ s.categoria.icono }}" alt="{{ s.categoria.nombre }}">
+                <span class="categoria col s4">{{ s.categoria }}</span>
+            {% else %}
+                <img class="icono col s5 invert-color"
+                     src="{{ MEDIA_URL }}{{ s.categoria.icono }}" alt="{{ s.categoria.nombre }}">
+                <span class="categoria col s1"></span>
+            {% endif %}
+            {% if s.precio %}
+                <span class="categoria col s2">|{{ s.precio }}|</span>
+            {% elif s.precio < 10 or s.precio == None %}
+                <span class="categoria col s2">|GRATIS|</span>
+            {% elif s.precio == None %}
+                <span class="categoria col s2">|GRATIS|</span>
+            {% endif %}
+            {% comment %}
+            <img class="icono col s2"
+                 src="{% static 'icons/ic_location_on_black_24px.svg' %}"
+                 alt="">
+            <span class="categoria col ">{{ s.comuna.nombre }}</span>
+            {% endcomment %}
+        </div>
+        <div class="resenna col s12 hide-on-med-and-down">
+            <div class="col s2">
+                {% if s.ultimo_comentario.id_usuario %}
+                    <img class="img-rounded"
+                         src="https://graph.facebook.com/{{ s.ultimo_comentario.id_usuario }}/picture?type=large"
+                         alt="">
+                {% else %}
+                    <img class="img-rounded"
+                         src="{% static 'icons/user.svg' %}"
+                         alt="">
+                {% endif %}
+            </div>
+            <div class="col s10">
+                {% if s.promedio_evaluacion > 0 and s.promedio_evaluacion <= 1.5 %}
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                {% elif s.promedio_evaluacion > 1.6 and s.promedio_evaluacion <= 2.5 %}
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                {% elif s.promedio_evaluacion > 2.6 and s.promedio_evaluacion <= 3.5 %}
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                {% elif s.promedio_evaluacion > 3.6 and s.promedio_evaluacion <= 4.5 %}
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                {% elif s.promedio_evaluacion > 4.6 %}
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                    <i class="small material-icons yellow-text darken-4">star</i>
+                {% endif %}
+            </div>
+        </div>
+        {% if s.direccion %}
+            <div class="direccion col s12">
+                <div class="contenido">
+                    <img class="ubicacion-icon" src="{% static 'icons/ubicacion.svg' %}" alt=""> {{ s.direccion|truncatechars_html:30 }}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</a>

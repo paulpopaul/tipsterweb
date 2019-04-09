@@ -1,0 +1,91 @@
+{% load staticfiles cache thumbnail i18n %}
+<div class="clientes">
+    <div class="container cabecera">
+        <div class="titulo">Clientes /</div>
+        <div class="subtitulo">Satisfechos con nuestro servicio</div>
+        {% comment %}
+        <div class="botonera right">
+            <a onclick="$('.carousel').carousel('prev')"
+               class="btn-floating waves-effect waves-light black">
+                <i class="material-icons">skip_previous</i>
+            </a>
+            <a onclick="$('.carousel').carousel('next')"
+               class="btn-floating waves-effect waves-light black pulse">
+                <i class="material-icons">skip_next</i>
+            </a>
+        </div>
+        {% endcomment %}
+    </div>
+    <div class="container">
+        <div class="row row-clientes">
+            <div class="panoramas">
+                <div class="">
+                    <div class="row">
+                        <div class="carousel carousel-slider" data-indicators="true">
+                            <div class="carousel-item white-text carousel" href="#one!">
+                                <div class="testimonio">
+                                    <div class="imagen col m3 hide-on-med-and-down">
+                                        <img src="{% static 'clientes/barbara.jpg' %}" alt=""
+                                             class="circle" width="180" height="180">
+                                    </div>
+                                    <div class="contenido col m9">
+                                        <div class="nombre">Barbara García</div>
+                                        <div class="resena">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                            elit. A commodi
+                                            consequatur ea porro ratione sunt totam voluptates! Ad, asperiores
+                                            autem
+                                            debitis
+                                            fuga illum
+                                            ipsam iste, nemo porro quasi repudiandae temporibus?
+                                        </div>
+                                        <div class="tienda right">Café la negra</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item white-text carousel" href="#two!">
+                                <div class="testimonio">
+                                    <div class="imagen col m3 hide-on-med-and-down">
+                                        <img src="/static/ejemplos/strom.jpg" alt=""
+                                             class="circle" width="200" height="200">
+                                    </div>
+                                    <div class="contenido col m9">
+                                        <div class="nombre">Lorem Ipsum</div>
+                                        <div class="resena">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                            elit. A commodi
+                                            consequatur ea porro ratione sunt totam voluptates! Ad, asperiores
+                                            autem
+                                            debitis
+                                            fuga illum
+                                            ipsam iste, nemo porro quasi repudiandae temporibus?
+                                        </div>
+                                        <div class="tienda right">Café la negra</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item white-text carousel" href="#three!">
+                                <div class="testimonio">
+                                    <div class="imagen col m3 hide-on-med-and-down">
+                                        <img src="/static/ejemplos/strom.jpg" alt=""
+                                             class="circle" width="200" height="200">
+                                    </div>
+                                    <div class="contenido col m9">
+                                        <div class="nombre">Ipsum Lorem</div>
+                                        <div class="resena">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                            elit. A commodi
+                                            consequatur ea porro ratione sunt totam voluptates! Ad, asperiores
+                                            autem
+                                            debitis
+                                            fuga illum
+                                            ipsam iste, nemo porro quasi repudiandae temporibus?
+                                        </div>
+                                        <div class="tienda right">Café la negra</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

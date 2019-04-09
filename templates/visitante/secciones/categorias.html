@@ -1,0 +1,21 @@
+{% load staticfiles cache thumbnail i18n %}
+<div class="categorias">
+    <div class="container cabecera">
+        <div class="titulo">Categorias /</div>
+        <div class="subtitulo">Lo que buscas, en un sólo lugar</div>
+    </div>
+    <div class="container center" id="contenedor-cats">
+        <div class="row">
+            {% for c in categories %}
+                <a class="col m3 s4" href="{% url 'directory' c.slug %}">
+                    <div>
+                        <img class="center invert-color"src="{{ MEDIA_URL }}{{ c.icono }}"
+                             alt="">
+                    </div>
+                    <br>
+                    <span class="black-text">{{ c.nombre_plural }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

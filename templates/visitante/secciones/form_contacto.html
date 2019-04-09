@@ -1,0 +1,26 @@
+{% load i18n %}
+<div class="form-contacto">
+    {% if contact.is_valid == False %}
+        <form class="" action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ contact.nombre }}
+                </div>
+                <div class="input-field col s12">
+                    {{ contact.email }}
+                </div>
+                <div class="input-field col s12">
+                    {{ contact.mensaje }}
+                </div>
+            </div>
+            <div class="center">
+                <button type="submit"
+                        class="btn btn-large white center">Enviar mensaje
+                </button>
+            </div>
+        </form>
+    {% else %}
+        <h3 class="title center-align">{% trans '¡Mensaje enviado!' %}</h3>
+    {% endif %}
+</div>

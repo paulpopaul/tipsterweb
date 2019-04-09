@@ -1,0 +1,1081 @@
+body
+  font-family: 'DIN Pro Condensed Regular'
+  letter-spacing: 1.3px
+
+html
+  line-height: 1
+
+.text-capitalize
+  text-transform: capitalize
+
+.justify
+  text-align: justify
+
+.green
+  background: #6ACE5B !important
+
+.container
+  width: 85%
+
+.bordes
+  border: solid green 1px
+
+.slider
+  .slides
+    background-color: transparent
+
+.invert-color
+  filter: invert(100%)
+
+.mapadegoogle
+  position: relative
+  width: 80%
+  height: 100vh
+  margin: 0
+  padding: 0
+  #map
+    position: relative
+    width: 80%
+    height: 100vh
+
+.side-nav
+  width: 36%
+
+.resultado-busqueda
+  line-height: 1
+  .card
+    background-color: #F2F2F2
+    .row
+      padding:
+        left: 3px
+        right: 3px
+    .title
+      font-size: 1.6em
+      letter-spacing: normal
+      font-family: "DIN Pro Condensed Bold Italic"
+      text-transform: uppercase
+
+
+.redtipster
+  font-family: "DIN Pro Condensed Black Italic"
+  font-size: 1.2em
+  text-transform: uppercase
+  background-color: #F5F5F5
+  line-height: 2.5em
+  border-radius: 10px
+  margin:
+    top: 2em
+  padding:
+    top: .5em
+    bottom: 1em
+  .titulo
+    font-size: 1.3em
+  .redondeado
+    border-radius: 10px
+
+.home
+  .slider-panoramas
+    height: 750px
+  .card-recomienda
+    .contenedor-nota
+      margin-top: -1.6em !important
+    .resenna
+      line-height: 1em
+
+  .container .row
+    margin-bottom: 0
+  .videobackground
+    position: relative
+    text-align: center
+    font-style: italic
+    .container-categorias
+      .row
+        margin: 0 auto
+        display: block
+    > video
+      position: relative
+      z-index: 0
+    .buscador
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      z-index: 1
+      .chip
+        border-radius: 5px
+        padding:
+          left: 3em
+          right: 3em
+
+  .buscador
+    .contenedor-busquedas
+      background-color: rgb(255, 255, 255)
+      border-radius: 5px
+      width: 90%
+      margin: 0 auto
+      height: 70px
+      .input-field
+        margin-top: .7em
+        top: -10px
+        padding: 2% 2% 2% 2%
+    .container
+      background-color: rgba(1, 1, 1, 0.6)
+      min-width: 100%
+      height: 100%
+      position: absolute
+      padding:
+        top: 25%
+        bottom: 1em
+        left: 1em
+        right: 1em
+    #part1, #part3
+      vertical-align: middle
+      text-transform: capitalize
+      font-size: 1.1em
+      min-height: 4.174em
+      padding-top: 1em
+      *
+        vertical-align: middle
+      .logo-tipster
+        margin-right: 1em
+        width: 35px
+        height: 35px
+      .material-icons
+        padding-bottom: 5px
+    input
+      &:not([type]), &[type=text]:not(.browser-default), &[type=password]:not(.browser-default), &[type=email]:not(.browser-default), &[type=url]:not(.browser-default), &[type=time]:not(.browser-default), &[type=date]:not(.browser-default), &[type=datetime]:not(.browser-default), &[type=datetime-local]:not(.browser-default), &[type=tel]:not(.browser-default), &[type=number]:not(.browser-default), &[type=search]:not(.browser-default)
+        background-color: transparent
+        border: none
+        //border-bottom: 1px solid #9e9e9e
+        border-radius: 0
+        outline: none
+        height: 3rem
+        width: 100%
+        font-size: 1.8em
+        margin: 0 0 0 0
+        padding: 0
+        -webkit-box-shadow: none
+        box-shadow: none
+        -webkit-box-sizing: content-box
+        box-sizing: content-box
+        -webkit-transition: all 0.3s
+        transition: all 0.3s
+    textarea.materialize-textarea
+      background-color: transparent
+      border: none
+      border-bottom: 1px solid #9e9e9e
+      border-radius: 0
+      outline: none
+      height: 3rem
+      width: 100%
+      font-size: 1.5em
+      margin: 0 0 0 0
+      padding: 0
+      -webkit-box-shadow: none
+      box-shadow: none
+      -webkit-box-sizing: content-box
+      box-sizing: content-box
+      -webkit-transition: all 0.3s
+      transition: all 0.3s
+
+  #logo-inicial
+    position: absolute
+    top: 25px
+    right: 10%
+    z-index: 99
+    height: 15px
+
+  .logo-imagen
+    width: 150px
+
+
+  /* containers
+  .clientes
+    height: auto
+    min-height: 500px
+  .eventos, .categorias
+    background-color: #ededed
+    padding-bottom: 3em
+    text-transform: initial
+    font-style: italic
+    height: auto
+    min-height: 450px
+    .text-description
+      padding: 0
+    .card-content
+      text-align: left !important
+    .black-text
+      font-family: "DIN Pro Condensed Bold Italic"
+
+  .precios
+    background-color: #FBFBFB
+    padding-bottom: 3em
+    text-transform: capitalize
+    .descripcion
+      color: #8c8c8c
+  .clientes, .contacto
+    background-color: #E2093D
+    color: #fff
+    padding-bottom: 3em
+  .team
+    background-color: #FBFBFB
+    padding-bottom: 3em
+  .siguenos
+    background-color: #000
+    color: #fff
+    padding-bottom: 5em
+  .container
+    &.cabecera
+      padding: 5em 0 3em 0
+    .titulo, .subtitulo
+      font-size: 2.5em
+      text-transform: uppercase
+    .titulo
+      font-family: 'DIN Pro Condensed Black Italic'
+    .subtitulo
+      font-size: 2.2em
+      font-family: 'DIN Pro Condensed Light'
+      font-weight: lighter
+  /* fin colores de containers
+
+  /* PANORAMAS
+
+  .card-panorama
+    max-width: 325px
+    float: left
+    border: solid #eeeeee 1.5px
+    border-radius: 15px
+    margin-bottom: 15px
+    .cabecerapanorama
+      line-height: 1.1em
+      font-size: 1.6em
+      padding-top: 1em
+      padding-bottom: .5em
+      .card-title
+        font-family: 'DIN Pro Condensed Bold'
+
+  .cabecerapanorama .green-text
+    color: #6ACE5B !important
+    font-family: 'DIN Pro Condensed Italic'
+  .cabecerapanorama .red-text
+    font-family: 'DIN Pro Condensed Italic'
+
+  .piepanorama
+    margin-top: .8em
+    .contenedor-nota
+      margin-top: .5em
+    .nota
+      text-align: center
+      font-size: 1.3em
+      border-radius: 8px
+      padding: .1em .5em .1em .5em
+      margin-top: 2em
+    .titulopanorama
+      font-family: 'DIN Pro Condensed Bold'
+      margin-left: 15%
+      min-width: 100px
+      max-width: 250px
+      width: 80%
+      font-size: 2em
+      text-align: left
+      margin-bottom: .2em
+      white-space: nowrap
+      overflow: hidden
+    .icono
+      font-size: 2rem
+      max-width: 30px
+      min-width: 25px
+      height: 30px
+      margin-left: 20%
+    .categoria
+      line-height: 2em
+      font-size: 1em
+      text-transform: uppercase
+      color: #000
+
+  .card-evento
+    padding-left: 0
+    padding-right: 0
+    .card-content
+      padding-top: 10px
+      max-width: 90%
+      text-align: center
+    .card-title
+      font-size: 2.2em
+      max-width: 90%
+
+    .fecha
+      font-size: 1.5em
+      padding-top: 10px
+    > *
+      padding-left: 0
+      padding-right: 0
+    .card-image
+      .redondeado
+        border-radius: 10px
+
+  .panoramas > .col
+
+  .card-footer
+    .btn
+      border-radius: 15px
+      font-size: 1.5em
+    .red
+      background-color: #E2093D !important
+
+  .card-servicio .titulo
+    color: #E2093D
+    margin-bottom: 3px
+
+  .card-panorama .img-responsive
+    width: 100%
+    height: 230px
+
+  .recomendado .nota
+    margin-top: 0em
+
+  .panoramas .resenna > *
+    padding: 11px !important
+
+  .resenna
+    .img-perfil
+      padding-top: 1.5em !important
+    .nombre
+      font-size: 1.2em
+      color: #c7c7c7
+    .contenido
+      color: #000 !important
+      font-family: 'DIN Pro Condensed Medium'
+      line-height: 1em
+      min-height: 4em
+
+  .direccion
+    .contenido
+      border-top: 1px #c7c7c7 solid
+      color: #c7c7c7
+      padding: .4em 0 .5em 0
+      font-family: 'DIN Pro Condensed Regular'
+      font-size: 1.5em
+      text-transform: capitalize
+      text-align: center
+    .material-icons
+      vertical-align: bottom
+
+  .resenna
+    .img-rounded
+      border-radius: 50%
+      width: 40px
+      height: auto
+    .row > i
+      color: #F2C072
+      padding-right: 25px
+    .s10
+      .small
+        font-size: 1em
+        color: #ECAD3B !important
+
+  /*  FIN PANORAMAS
+
+  .clientes
+    color: #fff
+    font-weight: 600
+    font-style: italic
+
+  .carousel
+    padding: 130px 0
+
+  .carousel-item
+    padding: 0 5% 0 5%
+
+  .testimonio.imagen.circle
+    border-radius: 50%
+
+  .clientes .testimonio
+    display: inline-flex
+    padding: auto 6em
+
+  .testimonio .contenido
+    .nombre
+      font-size: 3em
+    .resena
+      font-size: 1.5em
+    .tienda
+      font-size: 2.5em
+
+  .contenido .resena
+    padding: 1em 0 0 0 !important
+
+  .conenido .nombre
+    font-size: 5em
+
+  .contenido .tienda
+    padding-right: 40px
+
+  .content-center
+    margin: 0 auto
+
+  .team *
+
+  .card-servicio
+    .titulo
+      font-family: 'DIN Pro Condensed Medium'
+      text-transform: capitalize
+      margin-bottom: 0
+    .texto
+      width: 70%
+      font-family: 'DIN Pro Condensed Medium'
+    min-height: 12em
+
+  .categorias .categoria
+    padding-top: 15px
+    padding-bottom: 15px
+
+  .team .persona
+    .nombre
+      text-transform: uppercase
+      font-family: 'DIN Pro Condensed Medium Italic'
+      color: #AAAAAA
+      font-size: 2.5em
+    .responsive-img
+      width: 60%
+      margin-bottom: 3em
+
+  .form-contacto
+    input
+      &:not([type]), &[type=text], &[type=password], &[type=email], &[type=url], &[type=time], &[type=date], &[type=datetime], &[type=datetime-local], &[type=tel], &[type=number], &[type=search]
+        font-family: 'DIN Pro Condensed Light'
+        text-transform: uppercase
+        background-color: #B40B33
+        font-size: 1.7em
+        height: 2em
+        line-height: 2em
+        box-shadow: none
+        box-sizing: content-box
+        transition: all 0.25s
+        border-radius: 7px
+        border: #fff 1px solid
+        padding-left: 1em
+        width: 90%
+    textarea.materialize-textarea
+      font-family: 'DIN Pro Condensed Light'
+      text-transform: uppercase
+      background-color: #B40B33
+      font-size: 1.7em
+      min-height: 4em
+      line-height: 1em
+      box-shadow: none
+      box-sizing: content-box
+      transition: all 0.25s
+      border-radius: 7px
+      border: #fff 1px solid
+      padding-left: 1em
+      width: 90%
+    .btn
+      font-family: 'DIN Pro Condensed Bold'
+      border-radius: 7px
+      font-size: 1.7em
+      color: #E2093D
+
+  .card-precio
+    border: solid 1px #474747
+    border-radius: 10px
+    padding-bottom: 3em
+    .center .btn
+      font-family: 'DIN Pro Condensed Bold'
+      border-radius: 7px
+      font-size: 1.7em
+      background-color: #E2093D
+      color: #fff
+    .card-title
+      font-family: 'DIN Pro Condensed Bold'
+      font-size: 2.7em
+      text-transform: uppercase
+      line-height: 3em
+      margin: .5em
+      border-bottom: 1px #a8a8a8 solid
+    .precio
+      padding:
+        top: .51em
+        bottom: 1em
+      text-align: center
+      font-size: 3.5em
+      color: #E2093D
+      font-family: "DIN Pro Condensed Italic"
+      .sub
+        font-size: .5em
+        color: #000 !important
+        text-transform: lowercase
+    .descripcion
+      font-family: "DIN Pro Condensed Medium Italic"
+      text-align: center
+      font-size: 2em
+      color: #000
+      line-height: 1em
+      padding:
+        left: 5%
+        right: 5%
+      hr
+        height: 1px !important
+        color: #9f9f9f
+    .descripcion > *
+      margin:
+        top: .7em
+        bottom: .7em
+
+    .xtra-desc > *
+      margin:
+        top: .5em
+        bottom: .5em
+  .xtra-desc
+    padding-bottom: .5em !important
+    padding-top: .5em
+    .subrayar
+      font-family: "DIN Pro Condensed Bold Italic"
+      background-color: #F1F1F1
+      padding:
+        top: .1em
+        bottom: .1em
+        left: 20%
+        right: 20%
+      text-transform: lowercase
+
+  /*  Tienda Mala Junta
+  .mapadegoogle
+    min-height: 200px
+    min-width: 200px
+    #map
+      height: 200px
+      width: 200px
+
+  .recomendados
+    height: auto
+    .cabecera
+      .titulo
+        padding-top: 0
+    .tipster-recomienda
+      a
+        text-decoration: none
+        color: black !important
+      .main-tienda
+        margin:
+          bottom: 2em
+        .card-panorama
+          .img-perfil
+            padding-top: 1.5em !important
+          .nombre
+            font-size: 1.2em
+            color: #c7c7c7
+          .contenido
+            color: #000 !important
+            font-family: 'DIN Pro Condensed Medium'
+.sociales
+  align-items: center
+  padding:
+    bottom: 1em
+  a
+    color: #555
+    text-decoration: none
+  #icons
+    width: 100%
+
+  .social
+    background: #eee
+    border-radius: 50%
+    width: 60px
+    height: 60px
+    cursor: pointer
+    transition: background 500ms
+    &.icon-share
+      fill: #000
+      &:hover, &:focus
+        background: #000
+        fill: #eee
+    &.twitter
+      fill: #55acee
+      &:hover, &:focus
+        background: #55acee
+        fill: #fff
+    &.facebook
+      fill: #3b5998
+      &:hover, &:focus
+        background: #3b5998
+        fill: #fff
+    &.pinterest
+      fill: #cc2127
+      &:hover, &:focus
+        background: #cc2127
+        fill: #fff
+    &.youtube
+      fill: #cc2127
+      &:hover, &:focus
+        background: #cc2127
+        fill: #fff
+    &.googleplus
+      fill: #dd4b39
+      &:hover, &:focus
+        background: #dd4b39
+        fill: #fff
+    &:last-of-type
+      margin: 0
+
+.container-categorias
+  padding: 2em
+  width: 70%
+  margin: 0 auto
+  text-align: center
+  text-transform: uppercase
+
+.item-category
+  font-weight: 900
+
+#panorama-cont
+  height: auto
+//padding-bottom: 2em
+
+.full-height-container
+  height: 100%
+
+.autocomplete-content
+  margin-top: .8em
+
+.side-nav li > a:hover
+  background-color: transparent
+
+.container-nuevocomentario
+  padding:
+    top: 5em
+    bottom: 5em
+  width: 50%
+
+  input
+    text-align: right
+
+
+.mapadegoogle
+  .infomap
+    overflow: hidden
+    max-width: 200px
+    max-height: 250px
+    img
+      width: 100%
+    h1
+      color: #000
+      font-size: 1.6em
+      margin: .1em
+    a
+      color: #000
+      font-size: 1em
+.eventos
+  .col
+    margin-bottom: 20px
+  .card-evento
+    .card-image
+      .redondeado
+        max-width: 100% !important
+
+.galeria
+  padding-top: 1em
+  background-color: black
+  color: #fff
+
+
+.red
+  background-color: #CF0031 !important
+.red-text
+  color: #CF0031 !important
+
+.container-categorias
+  justify-content: center
+  height: 10em
+  display: flex
+  align-items: center
+  .row
+    justify-content: center
+    height: 10em
+    display: flex
+    align-items: center
+    .col
+      margin: 0
+      margin-left: auto
+      left: auto
+      right: auto
+
+.card-evento
+  .card-content
+    .fecha
+      .left
+        img
+          padding:
+            left: 0
+.eventos
+  .card-evento
+    font-style: normal !important
+    .titulo
+      font-weight: bold
+
+.ubicacion-icon
+  max-width: 25px
+  vertical-align: middle
+  line-height: .5em
+
+.lista-precios
+  .card-precio
+    z-index: 999
+  .card-title
+    margin-top: 0
+    font-size: 3em !important
+  .descripcion
+    font-size: 1.5em !important
+  .card-title
+    line-height: 1em
+    font-family: "DIN Pro Condensed Medium" !important
+    font-size: 1.2em
+  .precio
+    font-size: 10em
+    color: #dd133c !important
+    font-family: 'DIN Pro Light Italic'
+  .btn-large
+    font-size: 1em
+  .red-border
+    border: 2px solid #dd133c !important
+  hr
+    height: 1px !important
+  .descripcion
+    line-height: 2.5em
+  .descripcion
+    div:first-letter
+      text-transform: uppercase
+
+  .vacio
+    margin-top: .5em
+  .rotate
+    font-family: "DIN Pro Condensed Black"
+    color: #D71135
+    width: 10em
+    text-align: center
+    position: relative
+    margin-left: 67%
+    line-height: 3em
+    top: 1em
+    height: 3em
+    -webkit-transform: rotate(45deg)
+    -moz-transform: rotate(45deg)
+    -ms-transform: rotate(45deg)
+    -o-transform: rotate(45deg)
+  //background-color: #D71135
+  .title1
+    margin-top: 1em
+    color: #000
+
+  /* Safari
+    -webkit-transform: rotate(45deg)
+    -moz-transform: rotate(45deg)
+    -ms-transform: rotate(45deg)
+    -o-transform: rotate(45deg)
+    .rotate-top, .rotate-right
+      z-index: 10
+      background-color: yellow
+      border: 1px black solid
+      width: 5em
+      height: 5em
+      position: relative
+    .rotate-right
+      margin-left: 100%
+      height: 10em
+      width: 2em
+    .rotate-top
+      background-color: #FAFAFB
+      border: none
+      margin-left: 67%
+      margin-top: -36%
+    .zlast
+      z-index: 99999
+    */
+
+  .precio1
+    font-family: 'DIN Pro Condensed Bold Italic' !important
+    font-weight: 900
+    font-size: 115%
+    padding:
+      top: .5em
+      bottom: 1em
+  .btn-large
+    font-family: "DIN Pro Condensed Light" !important
+    font-size: 1.2em !important
+    line-height: 2em
+    height: 2em
+  .signo
+    font-size: 1.2em !important
+.subtitulo
+  font-style: italic
+.home
+  .clientes
+    padding-bottom: 0
+    .cabecera
+      padding-top: 2em
+    ul
+      .indicators
+        top: -170px !important
+    .row-clientes
+      margin-bottom: -60px !important
+    font-size: 90% !important
+
+.team
+  .subtitulo
+    font-style: italic
+
+.categorias
+  padding-bottom: 0 !important
+  .container
+    .cabecera
+      padding-bottom: 0
+    .row
+      justify-content: center
+      height: 20em
+      //display: flex
+      align-items: center
+      text-transform: uppercase
+  #contenedor-cats
+    height: auto
+    padding-top: 5em
+    .invert-color
+      padding: 0 1em
+.directorio
+  li
+    font-family: 'DIN Pro Condensed Bold Italic'
+    .subheader, .center
+      font-size: 1.4em
+      color: #000
+      margin: 0 auto
+
+  .menu-directorio
+    .row
+      padding-bottom: 0 !important
+    .container
+      .subheader
+        text-align: center
+  .datos
+    text-transform: uppercase
+    color: #C5C5C5 !important
+  .tiny-cat
+    max-height: 1em
+  .card-stacked
+    .row
+      padding-bottom: 0 !important
+      margin-bottom: 0 !important
+    .yellow-text
+      color: #FDD815 !important
+
+.menu-directorio
+  .input-field
+    margin-top: 0 !important
+
+  input#autocomplete-input.autocomplete
+    border: 1px #F0F0F0 solid
+    border-radius: 5px
+    margin-bottom: 0
+    font-size: 1.8em
+
+  #logo-direct
+    margin: 2em auto 2em auto
+
+  .grey
+    background-color: #F0F0F0 !important
+
+  .busquedas
+    button.btn
+      min-height: 3em
+    .row
+      margin-bottom: 0
+    .s10
+      height: 55px
+
+  .btn i
+    font-size: 2em
+
+  .vali
+    vertical-align: middle
+    margin:
+      left: 1em
+    padding:
+      top: .2em !important
+      left: 1.2em
+      right: 1.2em
+    width: 100%
+
+
+.hoverazible
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+
+#btn-ciudad
+  height: 1.5em
+  line-height: 1.5em
+  color: #fff
+  text-transform: capitalize
+  border-radius: 5px
+.muestra-ciudades
+  .ul-ciudades
+    z-index: 9999
+    top: 30%
+    left: 75%
+    width: 16em
+    display: list-item
+    justify-content: right
+    align-items: right
+    position: absolute
+    background: white
+    border-radius: 5px
+  .ciudad-container
+    margin: .5em auto
+    width: 15em
+    background-repeat: no-repeat
+    background-size: cover
+    border-radius: 5px
+    display: list-item
+    height: 5em
+    padding-top: 1.5em
+    .nombre-ciudad
+      width: 5em
+      line-height: 1.8em
+      height: 1.8em
+      border-radius: 5px
+      background: white
+      margin: 0 auto
+    .nombre-ciudad:hover
+      background: #CF0031
+      color: #fff !important
+      transition: all .5s
+  .ciudad-container:hover
+    -webkit-transform: scale(1.03)
+    transform: scale(1.03)
+    transition: all .5s
+
+.console-container
+  border-radius: 5px
+  margin-bottom: 0
+  font-size: 1.8em
+  height: 4em
+  padding-top: .8em
+  float: left
+  width: 100%
+  text-align: left
+
+
+@media screen and (max-width: 1300px)
+  .home
+    .piepanorama
+      font-size: .9em
+
+
+@media screen and (max-width: 1000px)
+  .container-cards
+    width: 95%
+
+@media screen and (max-width: 900px)
+  .home
+    .buscador
+      .container
+        padding-bottom: 0
+  .eventos
+    .panoramas
+      .card-evento
+        margin-bottom: 2em
+  .home
+    .videobackground
+      .buscador
+        top: 0
+        .item-category
+          height: auto
+        .input-field
+          width: 100%
+  #slide-out
+    z-index: 9999
+    margin: 0 auto
+    min-width: 100%
+  .contenedor-sociales
+    .social-icon
+      width: 50px
+      height: 50px
+@media screen and (max-width: 840px)
+  .cabecera
+    .titulo
+      font-size: .9em
+@media screen and (max-width: 400px)
+  .eventos
+    .card-evento
+      padding-bottom: 5em
+      .card-title
+        text-align: left
+
+@media screen and (max-width: 320px)
+  .profile-pic
+    width: 100%
+    float: none
+
+#rotar
+  -webkit-transform: rotate(15deg)
+  -moz-transform: rotate(15deg)
+  -ms-transform: rotate(15deg)
+  -o-transform: rotate(15deg)
+  transform: rotate(15deg)
+  -webkit-transform-origin: 0% 50%
+  -moz-transform-origin: 0% 50%
+  -ms-transform-origin: 0% 50%
+  -o-transform-origin: 0% 50%
+  transform-origin: 0% 50%
+  color: #fff
+  font-size: 22px
+  text-align: center
+  //top: 550px
+  width: 150px
+  float: right
+
+.event-modal
+  border-radius: 15px
+
+  background-color: #EAEAEA
+  .modal-content
+    background-color: #EAEAEA
+    min-height: auto
+    font-family: "DIN Pro Condensed Light"
+    font-style: normal
+    padding:
+      top: 3%
+      right: 10%
+      left: 10%
+      bottom: 0
+    h4
+      font-size: 2em
+      margin-bottom: 0
+    .fecha-modal
+      font-size: 1.2em
+      text-transform: capitalize
+      img
+        height: 1em
+      .col
+        padding-left: 0
+        margin-left: 0
+        margin-bottom: .2em
+    .descripcion-modal
+      font-size: 1.4em
+    .redondeado
+      border-radius: 20px
+  .modal-footer
+    font-style: normal
+    border-top: none !important
+    height: 80px !important
+    padding-top: 10px
+    background-color: #EAEAEA
+    padding-right: 10%
+    .modal-action
+      font-size: 1.4em
+      border-radius: 25px
+      height: 1.4em
+      line-height: 1.4em
+
+.categorias
+  .container
+    .row
+      .col
+        margin-bottom: 2em

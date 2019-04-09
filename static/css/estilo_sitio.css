@@ -1,0 +1,59 @@
+.somos {
+  background-color: #F1F1F1 !important;
+}
+.somos .titulo {
+  color: blue !important;
+}
+.somos .descripcion {
+  color: blueviolet !important;
+}
+
+.horarios {
+  background-color: blueviolet !important;
+}
+.horarios .titulo {
+  color: green !important;
+}
+.horarios .horario .reloj, .horarios .horario .horas {
+  color: yellow !important;
+}
+.horarios .horario .dias {
+  color: yellowgreen !important;
+}
+
+.galeria {
+  background-color: #0f9d58 !important;
+}
+.galeria .titulo {
+  color: yellowgreen;
+}
+
+.resennas .titulo, .resennas .contenido, .resennas .nombre {
+  color: yellow !important;
+}
+.resennas .fecha {
+  color: green !important;
+}
+
+.container-mapa {
+  background-color: whitesmoke !important;
+}
+.container-mapa .titulo {
+  color: darkblue !important;
+}
+.container-mapa .info {
+  background-color: #00acc1 !important;
+  color: #fff !important;
+}
+
+.contenedor-sociales {
+  background-color: darkblue !important;
+}
+.contenedor-sociales .titulo {
+  color: #fff !important;
+}
+.contenedor-sociales i {
+  color: transparent !important;
+}
+
+/*# sourceMappingURL=estilo_sitio.css.map */

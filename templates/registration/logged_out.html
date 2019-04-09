@@ -1,0 +1,18 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+
+{% block body %}
+    {% block main %}
+        Listo..
+        Redireccionando
+
+        <script>
+            setTimeout(function() {
+                window.location.href = "/";
+            }, 3000);
+        </script>
+    {% endblock %}
+{% endblock %}

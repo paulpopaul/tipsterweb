@@ -1,0 +1,16 @@
+{% load staticfiles cache thumbnail i18n %}
+<div class="eventos">
+    <div class="container cabecera">
+        <div class="titulo">Eventos /</div>
+        <div class="subtitulo">Comparte y vive nuestras experiencias</div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="panoramas masonry-container">
+                {% for event in events %}
+                    {% include 'visitante/secciones/evento-card.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

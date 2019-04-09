@@ -1,0 +1,30 @@
+{% extends 'visitante/home.html' %}
+{% block main %}
+    <div class="container-cabecera">
+
+    </div>
+    <div class="container center">
+        <h2>Inicio de Sesión</h2>
+        <div class="container">
+            <div class="row center">
+
+                {% comment %}
+                <a class="col s12 m6" href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+                <a class="col s12 m6" href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a><br>
+            {% endcomment %}
+
+                <a class="btn blue" href="{% url 'social:begin' 'facebook' %}">Ingresar con Facebook</a>
+
+            </div>
+        </div>
+        {% if form %}
+            <p><strong>-- O si tienes cuenta --</strong></p>
+            <form class="container" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn red" type="submit">Login</button>
+            </form>
+        {% endif %}
+        <br>
+    </div>
+{% endblock %}

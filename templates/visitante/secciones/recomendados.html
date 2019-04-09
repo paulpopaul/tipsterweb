@@ -1,0 +1,75 @@
+{% load staticfiles cache thumbnail i18n %}
+{% if recomendado1 %}
+    <div class="recomendados panoramas">
+        <div class="container cabecera">
+            <div class="titulo">Tipster Recomienda /</div>
+            <div class="subtitulo">
+            </div>
+            <div class="botonera right hide">
+                {% if recomendado2 %}
+                    <a onclick="$('.recomendados.slider').slider('prev');"
+                       class="btn-floating 8btn-large waves-effect waves-light red accent-4">
+                        <i class="material-icons">skip_previous</i>
+                    </a>
+                    <a onclick="$('.recomendados.slider').slider('pause');"
+                       class="btn-floating 8btn-large waves-effect waves-light red accent-4">
+                        <i class="material-icons">pause</i>
+                    </a>
+                    <a onclick="$('.recomendados.slider').slider('start');"
+                       class="btn-floating 8btn-large waves-effect waves-light red accent-4">
+                        <i class="material-icons">play_arrow</i>
+                    </a>
+                    <a onclick="$('.recomendados.slider').slider('next');"
+                       class="btn-floating 8btn-large waves-effect waves-light red accent-4 pulse">
+                        <i class="material-icons">skip_next</i>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="recomendados slider hide-on-med-and-down">
+                    <ul class="slides">
+                        {# TODO: hacer def prom() #}
+                        {% if recomendado1 %}
+                            <li>
+                                {% for s in recomendado1 %}
+                                    {% include 'visitante/secciones/tienda-cardr.html' %}
+                                {% endfor %}
+                            </li>
+                        {% endif %}
+                        {% if recomendado2 %}
+                            {% if recomendado2 %}
+                                <li>
+                                    {% for s in recomendado2 %}
+                                        {% include 'visitante/secciones/tienda-cardr.html' %}
+                                    {% endfor %}
+                                </li>
+                            {% endif %}
+                            {% if slider3 %}
+                                <li>
+                                    {% for s in recomendado3 %}
+                                        {% include 'visitante/secciones/tienda-cardr.html' %}
+                                    {% endfor %}
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="recomendados hide-on-large-only">
+                    <div class="col">
+                        {% for s in recomendado1 %}
+                            {% include 'visitante/secciones/tienda-cardr.html' %}
+                        {% endfor %}
+                        {% for s in recomendado2 %}
+                            {% include 'visitante/secciones/tienda-cardr.html' %}
+                        {% endfor %}
+                        {% for s in recomendado3 %}
+                            {% include 'visitante/secciones/tienda-cardr.html' %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

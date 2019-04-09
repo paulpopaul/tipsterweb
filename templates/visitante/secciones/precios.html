@@ -1,0 +1,166 @@
+{% load staticfiles cache thumbnail i18n %}
+<div class="precios">
+    <div class="container cabecera">
+        <div class="titulo">Lista de precios /</div>
+        <div class="subtitulo">El plan perfecto al precio perfecto</div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="lista-precios">
+                <a href="#id_nombre" class="col s12 m4">
+                    <div class="hoverable card-precio">
+                        <div class="center">
+                            <div class="card-title title1">Personal</div>
+                        </div>
+                        <div class="precio">
+                            <span class="signo">$</span><span class="precio1">9.990</span>
+                            <div class="sub">
+                                mensual
+                            </div>
+                        </div>
+                        <div class="descripcion">
+                            <hr>
+                            <div>
+                                portafolio personalizado
+                            </div>
+                            <hr>
+                            <div>
+                                fotografía profesional <br>X-5
+                            </div>
+                            <hr>
+                            <div> contacto + geolocalización</div>
+                            <hr>
+                            <div>valoración, comentarios y sugerencias de clientes a su negocio</div>
+                            <hr>
+                            <div>
+                                enlace a redes sociales
+                            </div>
+                            <hr>
+                            <div>
+                                asesoría publicitaria para posicionar su negocio en nuestra plataforma
+                            </div>
+                            <hr>
+                            <br>
+                        </div>
+                        <div class="center">
+                            {% comment %}
+                            <a href="#" class="btn btn-large center vacio">únete</a>
+                            {% endcomment %}
+                        </div>
+                    </div>
+                </a>
+                <a href="#id_nombre" class="col s12 m4">
+                    <div class="hoverable card-precio red-border">
+                        {% comment %}
+                        <div class="rotate">Recomendado</div>
+                        {% endcomment %}
+                        <div id="rotar" class="red">
+                            Recomendado
+                        </div>
+                        <div class="center">
+                            <div class="card-title title1">Compañía</div>
+                        </div>
+                        <div class="precio">
+                            <span class="signo">$</span><span class="precio1">15.990</span>
+                            <div class="sub">
+                                mensual
+                            </div>
+                        </div>
+                        <div class="descripcion">
+                            <hr>
+                            <div>
+                                portafolio personalizado
+                            </div>
+                            <hr>
+                            <div>
+                                fotografía profesional <br>X-7
+                            </div>
+                            <hr>
+                            <div> contacto + geolocalización</div>
+                            <hr>
+                            <div>valoración, comentarios y sugerencias de clientes a su negocio</div>
+                            <hr>
+                            <div>
+                                enlace a redes sociales
+                            </div>
+                            <hr>
+                            <div>
+                                asesoría publicitaria para posicionar su negocio en nuestra plataforma
+                            </div>
+                            <hr>
+                            <br>
+                        </div>
+                        <div class="center">
+                            {% comment %}
+                            <a href="#" class="btn btn-large center">únete</a>
+                            <br><br>
+                            (Recomendado)
+                            {% endcomment %}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="hoverable card-precio xtra-desc">
+                        <div class="descripcion">
+                            <div class="subrayar">
+                                Publicidad en nuestra fan-page de 1 vez por semana
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a  href="#id_nombre" class="col s12 m4 zlast">
+                    <div class="hoverable card-precio">
+                        <div class="center">
+                            <div class="card-title title1">Empresa</div>
+                        </div>
+                        <div class="precio">
+                            <span class="signo">$</span><span class="precio1">23.990</span>
+                            <div class="sub">
+                                mensual
+                            </div>
+                        </div>
+                        <div class="descripcion">
+                            <hr>
+                            <div>
+                                portafolio personalizado
+                            </div>
+                            <hr>
+                            <div>
+                                fotografía profesional <br>X-10
+                            </div>
+                            <hr>
+                            <div> contacto + geolocalización</div>
+                            <hr>
+                            <div>valoración, comentarios y sugerencias de clientes a su negocio</div>
+                            <hr>
+                            <div>
+                                enlace a redes sociales
+                            </div>
+                            <hr>
+                            <div>
+                                asesoría publicitaria para posicionar su negocio en nuestra plataforma
+                            </div>
+                            <hr>
+                            <br>
+                        </div>
+                        <div class="center">
+                            {% comment %}
+
+                            <a href="#" class="btn btn-large center">únete</a>
+                            <br><br>
+                            (Recomendado)
+                            {% endcomment %}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="hoverable card-precio xtra-desc">
+                        <div class="descripcion">
+                            <div class="subrayar">
+                                Publicidad en nuestra fan-page de 3 vez por semana
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

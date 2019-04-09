@@ -1,0 +1,70 @@
+{% extends 'visitante/secciones/base.html' %}
+{% load staticfiles cache thumbnail i18n %}
+{% block title %}Tipster - Pagina de inicio{% endblock %}
+{% block xtrastyles %}{% endblock %}
+{% block main %}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoBxQH6J5sUMk2TEhmqE2IXQ0yeCvromI&callback=initMap"></script>
+    <div class="home">
+        {% include 'visitante/secciones/background-video.html' %}
+        {% include 'visitante/secciones/panoramas.html' %}
+        {% include 'visitante/secciones/recomendados.html' %}
+        {% include 'visitante/secciones/eventos.html' %}
+        {% include 'visitante/secciones/servicios.html' %}
+        {% comment %}
+        {% include 'visitante/secciones/precios.html' %}
+        {% endcomment %}
+        {% include 'visitante/secciones/team.html' %}
+        {% include 'visitante/secciones/categorias.html' %}
+        {% include 'visitante/secciones/siguenos.html' %}
+        {% include 'visitante/secciones/contacto.html' %}
+    </div>
+    {% comment %}
+    <div class="type-wrap hidden">
+        <div id="strings-autocomplete">
+            <span>Hola, ¿Que buscas?.</span>
+            <p></p>
+        </div>
+    </div>
+    {% endcomment %}
+{% endblock %}
+{% block xtrascripts %}
+    <script>
+        (function ($) {
+            $(function () {
+                $('input.autocomplete').autocomplete({
+                    data: {
+                        {% for foo in categories %}
+                            "{{ foo.nombre_plural }}": {% if foo.icono %}'{{ MEDIA_URL }}{{ foo.icono }}'
+                                {% else %}null{% endif %},
+                        {% endfor %}
+                        {% for foo in stores %}
+                            "{{ foo.nombre }}": null,
+                        {% endfor %}
+                    },
+                    limit: 4, // The max amount of results that can be shown at once. Default: Infinity.
+                    onAutocomplete: function (val) {
+                        reDirecciona(val);
+                    },
+                    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+                    height: 1
+                });
+
+                function reDirecciona(val) {
+                    this.val = val;
+                    d = {
+                        {% for category in categories %}
+                            "{{ category.nombre_plural }}": "{% url 'directory' category.slug %}",
+                        {% endfor %}
+                        {% for store in stores %}
+                            "{{ store.nombre }}": "{% url 'detail-store' store.slug %}",
+                        {% endfor %}
+//Apple: "/admin/publicidad/tienda/1",
+//clave2: 22,
+                    };
+                    return window.location.href = d[val];
+                }
+            }); // end of document ready
+        })(jQuery); // end of jQuery name space
+    </script>
+{% endblock %}
+

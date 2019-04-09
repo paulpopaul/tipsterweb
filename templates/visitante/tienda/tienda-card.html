@@ -1,0 +1,44 @@
+{% load staticfiles cache thumbnail i18n %}
+<a href="{% url 'detail-store' s.slug %}"
+   class="black-text col s12 m4 main-tienda"
+   id="tienda-{{ s.id }}">
+    <div class="card-panorama hoverable card-recomienda">
+        <div class="cabecerapanorama center">
+            <span class="card-title">{{ s.nombre }}</span><br>
+            <span class="estado green-text">Abierto Ahora~</span>
+        </div>
+        <img class="img-responsive"
+             src="{{ s.tienda_foto.last.archivo|thumbnail_url:'min_tienda' }}">
+        <div class="piepanorama col s12">
+            <span class="col s12 titulopanorama">{{ s.nombre }}</span><br>
+            <img class="icono col s2"
+                 src="{{ MEDIA_URL }}{{ s.categoria.icono }}" alt="">
+            <span class="categoria col s2">{{ s.categoria }}</span>
+            <img class="icono col s2"
+                 src="{% static 'icons/ic_location_on_black_24px.svg' %}"
+                 alt="">
+            <span class="categoria col s2">{{ s.comuna.nombre }}</span>
+            <div class="col s2 white-text contenedor-nota">
+                <span class="nota green">5.8</span>
+            </div>
+        </div>
+        <div class="resenna col s12">
+            <div class="col s2">
+                {% if s.store_comment.last.pic %}
+                    <img class="img-rounded"
+                         src="{{ s.store_comment.last.pic|thumbnail_url:'min_tienda' }}"
+                         alt="">
+                {% else %}
+                    <img class="img-rounded"
+                         src="{% static 'icons/user.svg' %}"
+                         alt="">
+                {% endif %}
+            </div>
+            <div class="col s10">
+                <div class="nombre">{{ s.store_comment.last.name }}</div>
+                <br>
+                <div class="contenido">{{ s.store_comment.last.text|truncatechars:100 }}</div>
+            </div>
+        </div>
+    </div>
+</a>

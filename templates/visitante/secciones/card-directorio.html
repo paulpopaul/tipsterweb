@@ -1,0 +1,71 @@
+{% load cache thumbnail %}
+<div class="container resultado-busqueda hoverable" id="card-{{ s.id }}">
+    <a class="" href="{% url 'detail-store' s.slug %}">
+        <div class="col s12">
+            <div class="card horizontal waves-effect">
+                <div class="card-image valign-wrapper">
+                    <img src="{{ s.tienda_foto.last.archivo|thumbnail_url:'min_directorio' }}">
+                </div>
+                <div class="card-stacked">
+                    <div class="row">
+                        <div class="">
+                            <div class="col l12 title">
+                                <div class="  "><img class="tiny-cat invert-color right " src="/media/{{ s.categoria.icono }}" alt="imagen cat">{{ s.nombre }} </div>
+                            </div>
+                            <div class="col l12 title3">{{ s.categoria|upper }}</div>
+                        </div>
+                    </div>
+                    <div class="col s12 ">
+                        <div class="left">
+                            {% if s.promedio_evaluacion > 0 and s.promedio_evaluacion <= 1.5 %}
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                            {% elif s.promedio_evaluacion > 1.6 and s.promedio_evaluacion <= 2.5 %}
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                            {% elif s.promedio_evaluacion > 2.6 and s.promedio_evaluacion <= 3.5 %}
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                            {% elif s.promedio_evaluacion > 3.6 and s.promedio_evaluacion <= 4.5 %}
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                            {% elif s.promedio_evaluacion > 4.6 and s.promedio_evaluacion <= 5.5 %}
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                            {% elif s.promedio_evaluacion > 5.6 and s.promedio_evaluacion <= 6.5 %}
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                            {% elif s.promedio_evaluacion >= 7 %}
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                                <i class="small material-icons yellow-text darken-4">star</i>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class=" s12 black-text">
+                            {% if s.direccion %}
+                                <div class="col  s1  "><i class="material-icons tiny grey-text">local_phone</i></div><div class="col s5 title4 ">{{ s.direccion }}</div>
+                            {% endif %}
+                            {% if s.telefono %}
+                                <div class="col  s1"><i class="material-icons tiny  grey-text">local_phone</i></div><div class="col s5 title4 ">{{ s.telefono }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

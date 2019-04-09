@@ -1,0 +1,56 @@
+
+<form method="POST" id="formulario_comentarios">
+    <div class="container container-nuevocomentario">
+        {% csrf_token %}
+
+        <div>
+            <input type="hidden" id="myVar" name="variable" value="{{ variable }}">
+            <div class="input-field col s12 hide">
+                {{ comment_form.id_usuario }}
+                <label id="id_usuario_fb" for="{{ comment_form.id_usuario.id_for_label }}"></label>
+            </div>
+            <div class="input-field col s12 hidden">
+                <i class="material-icons prefix">people</i>
+                {{ comment_form.nombre }}
+                <label id="name_id_label" for="{{ comment_form.nombre.id_for_label }}"></label>
+            </div>
+            <label>Evaluación</label>
+            <select id="evaluacion_select" name="evaluacion_select" class="browser-default text-black">
+                <option selected="selected" disabled>Número de Estrellas</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4" selected>4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+            <div id="id_usuario"></div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">comment</i>
+                {{ comment_form.texto }}
+                {{ comment_form.texto.errors }}
+                <label for="{{ form.mensaje.id_for_label }}">Mensaje</label>
+            </div>
+
+            <div class="center">
+                {% comment %}
+
+            <a href="/logout" class="waves-effect btn-flat"
+               style="color: #fff;">Cerrar Sesión
+            </a>
+
+            {% endcomment %}
+                <button type="submit" class="waves-effect btn-flat"
+                        style="background-color: #FFC344; color: #fff;">Comentar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+{% if desde_comentario %}
+    <script>
+        // Materialize.toast(message, displayLength, className, completeCallback);
+        Materialize.toast('Su comentario será revisado en breve', 4000) // 4000 is the duration of the toast
+    </script>
+{% endif %}

@@ -1,0 +1,69 @@
+{% load staticfiles cache thumbnail i18n %}
+<div class="videobackground center-align">
+    <div class="opacity-vid">
+        <video poster="{% static 'videos/valdivia.jpg' %}"
+               autoplay muted loop width="100%" height="auto">
+            {# <source src="http://thenewcode.com/assets/videos/polina.webm" type="video/webm"> #}
+            <source  src="{% static 'videos/ciudad.mp4' %}" type="video/mp4">
+        </video>
+        <a href="#" id="logo-inicial">
+            <img class="logo-imagen" src="{% static 'img/logo.png' %}" alt="">
+        </a>
+        <div class="buscador center">
+            <div class="container">
+                <div class="row center">
+                    <form action="/busqueda/" method="GET" id="form-busquedas">
+                        <div class="contenedor-busquedas row center-block" id="stopTyping">
+                            <div class="muestra-ciudades hide">
+                                <ul class="ul-ciudades">
+                                    {% for ciudad in ciudades %}
+                                        <a href="" id="id-ciudad">
+                                            <li class="btn btn-flat ciudad-container" style="background-image: url({{ ciudad.portada|thumbnail_url:'portada-ciudad' }});">
+                                                <div class="nombre-ciudad red-text">{{ ciudad.nombre }}</div>
+                                            </li>
+                                        </a>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="col m4 hide-on-small-and-down" id="part1">
+                                <img class="logo-tipster" src="{% static 'img/logotipster.png' %}" alt="">
+                                <span class="red-text hide-on-med-and-down">Buscador</span>
+                            </div>
+                            <div class="col m4 s12">
+                                <div class='console-container'>
+                                    <span id='text'></span>
+                                </div>
+                                <div class="input-field autocomplete-container hide" autocomplete="off">
+                                    <input pattern=".{3,}"   required title="3 letras minimo" name="q" type="text" id="autocomplete-input"
+                                           class="autocomplete stop " autocomplete="off" value="{{ query|escape }}">
+                                </div>
+                            </div>
+                            <div class="col m4 s12 hide-on-med-and-down" id="part3">
+                                <a href="#" class="btn btn-flat  waves-effect" id="btn-ciudad">Valdivia</a>
+                                <button type="submit" id="search-city" class="btn btn-flat transparent waves-effect">
+                                    <i class="material-icons red-text small">search</i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="white-text hide-on-med-and-down">
+                    <div class="container-categorias">
+                        <div class="row">
+                            {% for c in categories %}
+                                <a class="col" href="{% url 'directory' c.slug %}">
+                                    <div>
+                                        <img src="{{ MEDIA_URL }}{{ c.icono }}"
+                                             alt="">
+                                    </div>
+                                    <br>
+                                    <span class="white-text ">{{ c.nombre_plural }}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

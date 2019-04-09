@@ -1,0 +1,553 @@
+{% extends 'visitante/secciones/base.html' %}
+{% load staticfiles thumbnail %}
+{% block title %}{{ tienda.nombre|capfirst }}/Tipster{% endblock %}
+
+{% block xtrastyles %}
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/detalle.css' %}" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'scss/socials.css' %}" media="screen,projection"/>
+    <style> #map-canvas {height: 600px;}</style>
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.css" rel="stylesheet"> <!-- 3 KB -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js"></script> <!-- 16 KB -->
+    {% if tienda.estilos %}
+        <style>
+            .contenedor-tienda .contenedor-imagen-mouse .imagen-mouse {
+                background: -webkit-linear-gradient(transparent, #{{ tienda.estilos.somos_background }})  !important;
+                background: -o-linear-gradient(transparent, #{{ tienda.estilos.somos_background }}) !important;
+                background: -moz-linear-gradient(transparent, #{{ tienda.estilos.somos_background }}) !important;
+            }
+            .somos {
+                background-color: #{{ tienda.estilos.somos_background }} !important;
+            }
+            .somos .titulo {
+                color: #{{ tienda.estilos.somos_titulo_color }} !important;
+            }
+            .somos .descripcion {
+                color: #{{ tienda.estilos.somos_titulo_descripcion }} !important;
+            }
+
+            .horarios {
+                background-color: #{{ tienda.estilos.horarios_background }} !important;
+            }
+            .horarios .titulo {
+                color: #{{ tienda.estilos.horarios_titulo_color }} !important;
+            }
+            .horarios .horario .reloj, .horarios .horario .horas {
+                color: #{{ tienda.estilos.horarios_horario_relojhoras_color }} !important;
+            }
+            .horarios .horario .dias {
+                color: #{{ tienda.estilos.horarios_horario_dias_color }} !important;
+            }
+
+            .galeria {
+                background-color: #{{ tienda.estilos.galeria_background }} !important;
+            }
+            .galeria .titulo {
+                color: #{{ tienda.estilos.galeria_titulo_color }} !important;
+            }
+
+            .resennas {
+                background-color: #{{ tienda.estilos.resennas_tituloycontenidonombre_background }} !important;
+            }
+            .resennas .titulo, .resennas .contenido, .resennas .nombre {
+                color: #{{ tienda.estilos.resennas_tituloycontenidonombre_color }} !important;
+            }
+            .resennas .fecha {
+                color: #{{ tienda.estilos.resennas_fecha_color }} !important;
+            }
+
+            .container-mapa {
+                background-color: #{{ tienda.estilos.mapa_background }} !important;
+            }
+            .container-mapa .titulo {
+                color: #{{ tienda.estilos.mapa_color }} !important;
+            }
+            .container-mapa .info {
+                background-color: #{{ tienda.estilos.mapa_info_back }} !important;
+                color: #{{ tienda.estilos.mapa_info_color }} !important;
+            }
+
+            .contenedor-sociales {
+                background-color: #{{ tienda.estilos.sociales_info_background }} !important;
+            }
+            .contenedor-sociales .titulo {
+                color: #{{ tienda.estilos.sociales_titulo_color }} !important;
+            }
+            /*# sourceMappingURL=estilo_sitio.css.map */
+        </style>
+    {% endif %}
+{% endblock %}
+{% block main %}
+
+    <script>
+        // This is called with the results from from FB.getLoginStatus().
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            // The response object is returned with a status field that lets the
+            // app know the current login status of the person.
+            // Full docs on the response object can be found in the documentation
+            // for FB.getLoginStatus().
+            var label = document.getElementById('name_id_label');
+            label.value = 'nope';
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                testAPI();
+            } else {
+                // The person is not logged into your app or we are unable to tell.
+                document.getElementById('status').innerHTML = 'Blabla' +
+                    'into this app.';
+                var id_usuario_facebook = "";
+                name_usuario_facebook = "";
+            }
+        }
+
+        // This function is called when someone finishes with the Login
+        // Button.  See the onlogin handler attached to it in the sample
+        // code below.
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
+
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '130283367813335',
+                cookie     : true,  // enable cookies to allow the server to access
+                                    // the session
+                xfbml      : true,  // parse social plugins on this page
+                version    : 'v2.12' // use graph api version 2.8
+            });
+
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+
+        };
+
+        // Load the SDK asynchronously
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/es_LA/sdk.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        // Here we run a very simple test of the Graph API after login is
+        // successful.  See statusChangeCallback() for when this call is made.
+        function testAPI() {
+            FB.api('/me', function(response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById('id_nombre').innerHTML =
+                    response.name + ' ';
+                console.log('Successful login for: ' + response.id);
+                console.log('https://graph.facebook.com/' + response.id + '/picture?type=large');
+                document.getElementById("id_usuario_fb").setAttribute('value',response.id);
+                id_usuario_facebook = response.id;
+                name_usuario_facebook = response.name;
+            });
+        }
+    </script>
+    <style>
+        @media screen and (max-width: 900px){
+            html {
+                font-size: 80%;
+            }
+        }
+        @media screen and (max-width: 500px){
+            html {
+                font-size: 75%;
+            }
+        }
+    </style>
+    <div class="contenedor-tienda">
+        <div class="cabecera valign-wrapper"
+             style="
+                     background-image: url('{{ tienda.get_foto_cabecera.archivo|thumbnail_url:'background-store' }}');
+                     background-size: cover;
+                     min-height: 60em;
+                     ">
+            <div class="textos">
+                <div class="titulo nombre-tienda-titulo">
+                    {{ tienda.nombre }}
+                </div>
+                <div class="subtitulo nombre-tienda-subtitulo">
+                    {% if tienda.frase %}
+                        {{ tienda.frase }}
+                    {% endif %}
+                </div>
+                <div id=mouse_body>
+                    <div id=mouse_wheel></div>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="contenedor-imagen-mouse">
+            <div class="imagen-mouse ">
+            </div>
+        </div>
+
+        <div class="somos">
+            {% if tienda.logo %}
+                <img src="/media/{{ tienda.logo }}" alt="Logo" class="responsive-img img-logo-responsive ">
+            {% endif %}
+            <div class="titulo">¿Quiénes Sómos?</div>
+            <div class="descripcion">{{ tienda.quienes_somos|safe }}</div>
+        </div>
+        <div class="horarios">
+            <div class="titulo">Horario</div>
+            {% for horario in tienda.tienda_horario.select_related %}
+                <div class="horario upercased">
+                    <i class="material-icons reloj">access_time</i>
+                    <span class="dias">{{ horario.dias }}</span>
+                    <span class="horas">{{ horario.horas }}</span>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="galeria center">
+            <div class="titulo">Galería Imágenes</div>
+            <div class="fotorama"
+                 data-width="1440"
+                 data-maxwidth="100%"
+                 data-ratio="16/9"
+                 data-allowfullscreen="true"
+                 data-nav="thumbs">
+                {% for foo in tienda.tienda_foto.select_related %}
+                    <img src="{{ foo.archivo|thumbnail_url:'background' }}" alt="">
+                {% endfor %}
+            </div>
+        </div>
+        <div class="resennas">
+            <div class="container">
+                <div class="titulo center">Reseñas</div>
+                {% for comentario in tienda.tienda_comentario.select_related %}
+                    {% if comentario.visible %}
+                        <div class="contenedor-resenna">
+                            <div class="container resenna">
+                                <div class="row">
+                                    <div class="col l3 m5 hide-on-small-and-down">
+                                        <div class="imagen">
+                                            {% if comentario.id_usuario %}
+                                                {# recibe id_usuario y se alimenta de la api de facebook para obtención de img #}
+                                                <img class="circle responsive-img"
+                                                     src="https://graph.facebook.com/{{ comentario.id_usuario }}/picture?type=large"
+                                                     alt="">
+                                            {% else %}
+                                                <img class="circle responsive-img"
+                                                     src="{% static 'icons/user.svg' %}"
+                                                     alt="">
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col l9 m7 s12 texto container">
+                                        <div class="nombre">
+                                            {{ comentario.nombre }}
+                                            <div class="container-nota right">
+                                                {% if comentario.evaluacion < 4 %}
+                                                    <span class="red white-text nota">{{ comentario.evaluacion }}</span>
+                                                {% else %}
+                                                    <span class="green white-text nota">{{ comentario.evaluacion }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="contenido">
+                                            "{{ comentario.texto }}"
+                                        </div>
+                                        <div class="right fecha">
+                                            <i class="material-icons reloj">access_time</i>
+                                            {% if comentario.creado %}
+                                                <span class="col dia">{{ comentario.creado }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                        </div>
+                    {% endif %}
+                {% empty %}
+                    <div class="center">No existe ninguna reseña</div>
+                {% endfor %}
+
+
+                {% block login-sociales %}
+                    {% include 'visitante/comentarioForm.html' %}
+
+
+                    <div class="center" id="primero-tu-fb">
+                        <div class="container">
+                            <br><br>
+                            <div class="center">
+                                <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                            </div>
+                            <br><br>
+                        </div>
+                    </div>
+
+
+                    <!--
+                      Below we include the Login Button social plugin. This button uses
+                      the JavaScript SDK to present a graphical Login button that triggers
+                      the FB.login() function when clicked.
+                    -->
+
+
+                {% endblock %}
+
+
+            </div>
+        </div>
+
+        <div class="container-mapa">
+            <div class="titulo center">¿Cómo llegar?</div>
+            <div class="container">
+                <div id="map-canvas"></div>
+                {% if tienda.google_map %}
+                    <script>
+                        var map;
+                        function initMap() {
+                            map = new google.maps.Map(document.getElementById('map-canvas'), {
+                                zoom: 15,
+                                center: new google.maps.LatLng({{ tienda.google_map }}),
+                                mapTypeId: 'roadmap'
+                            });
+                            function addMarker() {
+                                var point = new google.maps.LatLng({{tienda.google_map}});
+                                var image = '{{ MEDIA_URL }}'+ 'img/logotipster.png';
+                                var marker = new google.maps.Marker({
+                                    position: point,
+                                    map: map,
+                                    //icon: image,
+                                    url: "/tienda/{{ tienda.slug }}",
+                                    title: '{{ tienda.id }}'
+                                });
+                                marker['infowindow']  = new google.maps.InfoWindow({
+                                    content: "<div class=\"infomap\"> " +
+                                    "<img src=\"/media/{{ tienda.get_foto_cabecera.archivo }}\">" +
+                                    "<a href=\"/tienda/{{ tienda.slug }}\"><h1>{{tienda.nombre}}</h1> <br> {{ tienda.direccion }}</a></div>"
+                                });
+                                google.maps.event.addListener(marker, 'click', function() {
+                                    window.location.href = this.url;
+                                    //this['infowindow'].open(map, this);
+                                });
+                                google.maps.event.addListener(marker, 'mouseover', function() {
+                                    //this['infowindow'].open(map, this);
+                                });
+                                google.maps.event.addListener(marker, 'mouseout', function() {
+                                    //this['infowindow'].close(map, this);
+
+                                });
+                            }
+                            var features = [
+                                {
+                                    position: new google.maps.LatLng({{ tienda.google_map }}),
+                                    type: 'info'
+                                },
+                            ];
+                            for (var i = 0, feature; feature = features[i]; i++) {
+                                addMarker(feature);
+                            }
+                        }
+                    </script>
+                {% else %}
+                    <script>
+                        var map;
+                        function initMap() {
+                            map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 13,
+                                center: new google.maps.LatLng(-39.828524, -73.223841),
+                                mapTypeId: 'roadmap'
+                            });
+                            {% if categori.icono_mapa %}
+                                var iconBase = '{{ MEDIA_URL }}';
+                                var icons = {
+                                    parking: {
+                                        icon: iconBase + '{{ category.icono_mapa }}'
+                                    },
+                                    library: {
+                                        icon: iconBase + '{{ category.icono_mapa }}'
+                                    },
+                                    info: {
+                                        icon: iconBase + '{{ category.icono_mapa }}'
+                                    }
+                                };
+                            {% else %}
+                                var icons = {
+                                    parking: {
+                                        icon: '{% static 'icons/ic_location_on_black_24px.svg' %}'
+                                    },
+                                    library: {
+                                        icon: '{% static 'icons/ic_location_on_black_24px.svg' %}'
+                                    },
+                                    info: {
+                                        icon: '{% static 'icons/ic_location_on_black_24px.svg' %}'
+                                    }
+                                };
+                            {% endif %}
+                            function addMarker() {
+                                var point = new google.maps.LatLng({{tienda.google_map}});
+                                var image = '{{ MEDIA_URL }}'+ 'img/logotipster.png';
+                                var marker = new google.maps.Marker({
+                                    position: point,
+                                    map: map,
+                                    //icon: image,
+                                    url: 'http://172.16.0.101:8882/zone/' + {{tienda.id}},
+                                    title: '{{ tienda.id }}'
+                                });
+                                marker['infowindow']  = new google.maps.InfoWindow({
+                                    content: "<h1>{{tienda.nombre}}</h1> <br> {{ tienda.nombre }} <p> <a href=\"http:\/\/172.16.0.101:8882\/zone\/{{ tienda.id }}\"> {{ tienda.name }}</a>",
+                                });
+                                google.maps.event.addListener(marker, 'click', function() {
+                                    //window.location.href = this.url;
+                                    this['infowindow'].open(map, this);
+                                });
+                                google.maps.event.addListener(marker, 'mouseover', function() {
+                                    // this['infowindow'].open(map, this);
+                                });
+                                google.maps.event.addListener(marker, 'mouseout', function() {
+                                    // this['infowindow'].close(map, this);
+                                });
+                            }
+                            var features = [
+                                {
+                                    position: new google.maps.LatLng({{ tienda.google_map }}),
+                                    type: 'info'
+                                },
+                            ];
+                            for (var i = 0, feature; feature = features[i]; i++) {
+                                addMarker(feature);
+                            }
+                        }
+                    </script>
+                {% endif %}
+
+                <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoBxQH6J5sUMk2TEhmqE2IXQ0yeCvromI&callback=initMap">
+                </script>
+
+                <div class="info">
+                    <div class="row">
+                        {% if tienda.email %}
+                            <div class="mail col m4 s12">
+                                <div class="row">
+                                    <div class="col m4 s12">
+                                        <img src="{% static 'icons/contacto-02.svg' %}" alt="" class="img-icon">
+                                    </div>
+                                    <div class="col m8 s12">
+                                        <div class="title">Email</div>
+                                        <div class="content"><a href="mailto:{{ tienda.email }}">{{ tienda.email }}</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if tienda.telefono %}
+                            <div class="telefono col m4 s12">
+                                <div class="row">
+                                    <div class="col m4 s12">
+                                        <img src="{% static 'icons/contacto-01.svg' %}" alt="" class="img-icon">
+                                    </div>
+                                    <div class="col m8 s12">
+                                        <div class="title">Telefono</div>
+                                        <div class="content"><a href="tel:{{ tienda.telefono }}">{{ tienda.telefono }}</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if tienda.direccion %}
+                            <div class="direccion col m4 s12">
+                                <div class="row">
+                                    <div class="col m4 s12">
+                                        <img src="{% static 'icons/contacto-03.svg' %}" alt="" class="img-icon">
+                                    </div>
+                                    <div class="col m8 s12">
+                                        <div class="title">Direccion</div>
+                                        <div class="content">{{ tienda.direccion }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if tienda.facebook_url or tienda.twitter_url or tienda.instagram_url or tienda.youtube_url %}
+                <div class="contenedor-sociales">
+                    <div class="titulo center">Redes Sociales</div>
+                    <div class="container-sociales">
+                        <div class="social-icons">
+                            {% if tienda.facebook_url %}
+                                <a target="_blank" href="{{ tienda.facebook_url }}" class="social-icon social-icon--facebook">
+                                    <i class="fa fa-facebook"></i>
+                                    <div class="tooltip">Facebook</div>
+                                </a>
+                            {% endif %}
+                            {% if tienda.twitter_url %}
+                                <a target="_blank" href="{{ tienda.twitter_url }}" class="social-icon social-icon--twitter">
+                                    <i class="fa fa-twitter"></i>
+                                    <div class="tooltip">Twitter</div>
+                                </a>
+                            {% endif %}
+                            {% if tienda.instagram_url %}
+                                <a target="_blank" href="{{ tienda.instagram_url }}" class="social-icon social-icon--instagram">
+                                    <i class="fa fa-instagram"></i>
+                                    <div class="tooltip">Instagram</div>
+                                </a>
+                            {% endif %}
+                            {% if tienda.youtube_url %}
+                                <a target="_blank" href="{{ tienda.youtube_url }}" class="social-icon social-icon--youtube">
+                                    <i class="fa fa-youtube"></i>
+                                    <div class="tooltip">Youtube</div>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}>
+        </div>
+    </div>
+
+{% endblock %}
+{% block xtrascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenLite.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/easing/EasePack.min.js"></script>
+    <script>
+        if (myWindow == null || typeof(myWindow)=='undefined') {
+            alert('Por favor deshabilita el bloqueador de ventanas emergentes');
+            Materialize.toast('Por favor deshabilita el bloqueador de ventanas emergentes', 4000);
+            //aqui es donde quiero habilitar las ventanas emergentes ya sea con un Confirm.
+        }
+    </script>
+    <script defer type="text/javascript">
+        $(document).ready(function(){
+            setTimeout(function () {
+                console.log(id_usuario_facebook);
+                console.log(name_usuario_facebook);
+                document.getElementById('id_id_usuario').value = id_usuario_facebook;
+                document.getElementById('id_nombre').value = name_usuario_facebook;
+            }, 3000)
+        });
+    </script>
+    <script defer type="text/javascript">
+        $(document).ready(function(){
+            setTimeout(function () {
+                var a = document.getElementById('id_id_usuario').value;
+                var b = document.getElementById('id_nombre').value;
+                if (a != "" || b != "") {
+                    $('#primero-tu-fb').hide()
+                    //document.getElementById('primero-tu-fb').style.display = "none";
+                    //document.getElementById('id_texto').setAttribute("readonly", true);
+                } else {
+                    //document.getElementById('desaparece_sino').removeAttribute("display");
+                    //document.getElementById('desaparece_sino').style.display = "none";
+                    $('#formulario_comentarios').hide()
+                }
+                console.log(a);
+                console.log(b);
+            }, 3200)
+        });
+    </script>
+{% endblock %}

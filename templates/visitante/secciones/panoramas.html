@@ -1,0 +1,65 @@
+{% load staticfiles cache thumbnail i18n %}
+{% if slider1 %}
+    <div class="panoramas" id="panorama-cont">
+        <div class="container cabecera">
+            <div class="titulo">Panoramas /</div>
+            <div class="subtitulo">Los mejores lugares y eventos de la ciudad</div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="recomendados slider hide-on-med-and-down">
+                    <ul class="slides">
+                        {# TODO: hacer def prom() #}
+                        {% if slider1 %}
+                            <li>
+                                {% for s in slider1 %}
+                                    {% include 'visitante/secciones/tienda-card.html' %}
+                                {% endfor %}
+                            </li>
+                        {% endif %}
+
+                        {% if slider2 %}
+                            <li>
+                                {% for s in slider2 %}
+                                    {% include 'visitante/secciones/tienda-card.html' %}
+                                {% endfor %}
+                            </li>
+                            {% if slider3 %}
+                                <li>
+                                    {% for s in slider3 %}
+                                        {% include 'visitante/secciones/tienda-card.html' %}
+                                    {% endfor %}
+                                </li>
+                            {% endif %}
+                        {% endif %}
+
+
+                    </ul>
+                </div>
+                <div class="recomendados hide-on-large-only">
+                    <div class="col">
+                        {% if slider1 %}
+                            {% for s in slider1 %}
+                                {% include 'visitante/secciones/tienda-card.html' %}
+                            {% endfor %}
+                            {% if slider2 %}
+                                {% for s in slider2 %}
+                                    {% include 'visitante/secciones/tienda-card.html' %}
+                                {% endfor %}
+                            {% endif %}
+                            {% if slider3 %}
+                                {% for s in slider3 %}
+                                    {% include 'visitante/secciones/tienda-card.html' %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+{% endif %}

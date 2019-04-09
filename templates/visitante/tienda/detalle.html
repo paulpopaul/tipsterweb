@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load staticfiles thumbnail %}
+{% block main %}
+    <div class="menu-directorio">
+        <a href="#" data-activates="slide-out" class="button-collapse"></a>
+        <ul id="slide-out" class="side-nav fixed directorio">
+            <li class="center">
+                <a href="{% url 'home' %}"><img src="{% static 'img/logo-directorio.jpg' %}" alt=""
+                                                class="responsive-img"></a>
+            </li>
+            <li class="container">
+                <div class="row">
+                    <div class="input-field col s10">
+                        <input type="text" id="autocomplete-input" class="autocomplete">
+                    </div>
+                    <div class="input-field col s2">
+                        <span><i class="material-icons medium">search</i></span>
+                    </div>
+                </div>
+            </li>
+            <li class="container">
+                <span class="subheader">{{ categoria.category_store.count }} Resultados</span></li>
+            <li>
+                {% for store in category.category_store.select_related %}
+                    <div class="container resultado-busqueda hoverable">
+                        <a class="" href="{% url 'detail-store' store.slug %}">
+                            <div class="col s12">
+                                <div class="card horizontal waves-effect">
+                                    <div class="card-image">
+                                        <img src="{{ store.store_pictures.last.file|thumbnail_url:'min_directorio' }}">
+                                    </div>
+                                    <div class="card-stacked">
+                                        <div class="row"><br>
+                                            <div class="container">
+                                                <div class="col l12 title">
+                                                    <div class="left black-text">{{ store.name }}</div>
+                                                    <div class="right">
+                                                        <img src="{{ MEDIA_URL }}{{ store.category.icon }}" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col l12 black-text">{{ store.category|upper }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 left">
+                                            <div class="container">
+
+                                                <i class="small material-icons yellow-text darken-4">star</i>
+                                                <i class="small material-icons yellow-text darken-4">star</i>
+                                                <i class="small material-icons yellow-text darken-4">star</i>
+                                                <i class="small material-icons yellow-text darken-4">star</i>
+                                                <i class="small material-icons yellow-text darken-4">star</i>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="container black-text">
+                                                {% if store.address %}
+                                                    <div class="col s6">{{ store.address }}</div>
+                                                {% endif %}
+                                                {% if store.phone %}
+                                                    <div class="col s6 right">{{ store.phone }}</div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </li>
+            <li class="container center">
+                <div class="redtipster black-text">
+                    <div class="titulo">Red Tipster</div>
+                    <a href="{% url 'home' %}#contactanos" class="btn red darken-4 white-text waves-effect redondeado">Unirme</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="mapadegoogle">
+        <div id="map"></div>
+        <script>
+            var map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 13,
+                    center: new google.maps.LatLng({{ category.category_store.last.google_map }}),
+                    mapTypeId: 'roadmap'
+                });
+                var iconBase = '{{ MEDIA_URL }}';
+                var icons = {
+                    parking: {
+                        icon: iconBase + '{{ category.map_icon }}'
+                    },
+                    library: {
+                        icon: iconBase + '{{ category.map_icon }}'
+                    },
+                    info: {
+                        icon: iconBase + '{{ category.map_icon }}'
+                    }
+                };
+
+                function addMarker(feature) {
+                    var marker = new google.maps.Marker({
+                        position: feature.position,
+                        icon: icons[feature.type].icon,
+                        map: map
+                    });
+                }
+
+                var features = [
+                    {% for foo in category.category_store.select_related %}
+                        {
+                            position: new google.maps.LatLng({{ foo.google_map }}),
+                            type: 'info'
+                        },
+                    {% endfor %}
+                ];
+
+                for (var i = 0, feature; feature = features[i]; i++) {
+                    addMarker(feature);
+                }
+            }
+        </script>
+    </div>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoBxQH6J5sUMk2TEhmqE2IXQ0yeCvromI&callback=initMap">
+    </script>
+    <div class="type-wrap hidden">
+        <div id="strings-autocomplete">
+            <span>Hola, ¿Que buscas?...</span>
+            <p></p>
+        </div>
+    </div>
+{% endblock %}
+{% block xtrascripts %}
+    <script>
+        (function ($) {
+            $(function () {
+                $('input.autocomplete').autocomplete({
+                    data: {
+                        {% for foo in categories %}
+                            "{{ foo.plural_name }}": {% if foo.icon %}'{{ MEDIA_URL }}{{ foo.icon }}'
+                                {% else %}null{% endif %},
+                        {% endfor %}
+                        {% for foo in stores %}
+                            "{{ foo.name }}": null,
+                        {% endfor %}
+
+                    },
+                    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+                    onAutocomplete: function (val) {
+                        reDirecciona(val);
+                    },
+                    minLength: 1 // The minimum length of the input for the autocomplete to start. Default: 1.
+                });
+
+                function reDirecciona(val) {
+                    this.val = val;
+                    d = {
+                        {% for category in categories %}
+                            "{{ category.plural_name }}": "{% url 'directory' category.slug %}",
+                        {% endfor %}
+                        {% for store in stores %}
+                            "{{ store.name }}": "{% url 'detail-store' store.slug %}",
+                        {% endfor %}
+                        //Apple: "/admin/publicidad/tienda/1",
+                        //clave2: 22,
+                    };
+                    return window.location.href = d[val];
+                }
+            }); // end of document ready
+        })(jQuery); // end of jQuery name space
+    </script>
+{% endblock %}
